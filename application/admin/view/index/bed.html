@@ -1,0 +1,117 @@
+{include file="public/header"}
+{include file="public/left"}
+<body class="childrenBody" style="overflow-y: scroll; ">
+<blockquote class="layui-elem-quote news_search lefts">
+    <div class="layui-inline">
+        <a class="layui-btn layui-btn-sm  layui-btn-normal" href="javascript: window.history.go(0);">床位列表</a>
+        <a class="layui-btn layui-btn-sm  layui-btn-normal newsAdd_btn" href="{url('admin/index/banner')}?point=_add">添加列表</a>
+        <a class="layui-btn layui-btn-sm  layui-btn-normal newsAdd_btn" href="{url('admin/index/banner')}?point=_add">回收站</a>
+    </div>
+    <div class="layui-inline">
+        <form class="layui-form layui-form-pane" action="">
+            <label class="layui-form-label">床位</label>
+            <div class="layui-input-block">
+                <input type="text" <?php if (!empty($like)):?> value="{$like}" <?php Endif;?> name="keywords"  placeholder="请输入标题/id"
+                       autocomplete="off" class="layui-input"><!--lay-verify="required" -->
+                <button style="    position: absolute; left: 100%;  bottom: 10%;"
+                        class="layui-btn layui-btn-sm layui-btn-normal" lay-submit="search" lay-filter="search">
+                    <i class="layui-icon layui-icon-search"></i>搜索
+                </button>
+            </div>
+        </form>
+    </div>
+    <!--<div class="layui-inline" style="    margin-left: 5%;">-->
+    <!--<ul class="layui-tab-title">-->
+    <!--<li lay-id="list"  >&lt;!&ndash;class="layui-this"&ndash;&gt;-->
+    <!--<a href="/admin/store.store_product/index/type/6.html">回收站</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+</blockquote>
+<div class="layui-form news_list lefts">
+    <table class="layui-table">
+        <colgroup>
+            <col width="3%">
+            <col width="8%">
+            <col width="2%">
+            <col width="2%">
+            <col width="2%">
+            <col width="2%">
+            <col width="2%">
+            <col width="5%">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>顺序</th>
+            <th>名称</th>
+            <th>床位类型</th>
+            <th>推荐</th>
+            <th>状态</th>
+            <th>简介</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody class="news_content">
+        {if !empty($list)}
+        {volist name="list" id="vo"}
+        <tr>
+            <td align="left">{$vo.sort}</td>
+            <td align="left">
+                <p style="float: left">
+                    <a href="javascript:;"><img src="{$vo.icon}" alt="{$vo.title}" width="45px" onclick="previewImg(this)"></a>
+                </p>
+                <p><span style="color: #e84e14;">￥: </span>{$vo.price}</p>
+                <p><span style="color: #e84e14;">名称：</span> {$vo.title}</p>
+            </td>
+            <td align="left"><?php if( $vo['bed'] == 1): echo '单人床'; else: echo '双人床' ; ?><?php Endif;?></td>
+            <td style="overflow:visible;">
+                {if $vo.is_recommend == 1}
+                <a href="javascript:;"> <span id="switch{$vo.is_recommend}" class="switch" data-switch-value="2"
+                                              data-point="" data-id="{$vo.id}" data-field="is_recommend"
+                                              data-do="_status">推荐</span></a>
+                {else}
+                <a href="javascript:;"> <span id="switch{$vo.is_recommend}" class="switch" data-switch-value="1"
+                                              data-id="{$vo.id}" data-field="is_recommend"
+                                              data-do="_status">否</span></a>
+                {/if}
+            </td>
+            <td style="overflow:visible;">
+                {if $vo.status == 1}
+                <a href="javascript:;"> <span id="switch{$vo.status}" class="switch" data-switch-value="2" data-point=""
+                                              data-id="{$vo.id}" data-field="status" data-do="_status">通过</span></a>
+                {else}
+                <a href="javascript:;"> <span id="switch{$vo.status}" class="switch" data-switch-value="1"
+                                              data-id="{$vo.id}" data-field="status" data-do="_status">未通过</span></a>
+                {/if}
+            </td>
+            <td>{if strlen($vo.intro) > 60} <?php echo  mb_substr( unserialize( $vo['intro']) , 0,60,"utf-8"); ?>.....
+                {else} {unserialize($vo['intro'])}{/if}
+            </td>
+            <td>
+                <a href="{url('admin/index/bed')}?point=_add&id={$vo.id}">
+                    <button class="layui-btn layui-btn-sm layui-btn-normal layui-btn-xs update-data"><i
+                            class="layui-icon" data-id=""></i></button>
+                </a>
+
+                <a>
+                    <button class="layui-btn layui-btn-primary layui-btn-xs delete-data" data-id="{$vo.id}"
+                            data-url="{url('admin/index/bed')}"><i class="layui-icon"></i></button>
+                </a>
+            </td>
+        </tr>
+        {/volist}
+        <tr>
+            <td colspan="9">
+                <div> {$list->render()}
+                    <ul class="pagination">
+                        <li><span class="nobg">共{$total}条记录</span><span class="nobg">当前页：第{$page}页</span></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        {/if}
+        </tbody>
+    </table>
+</div>
+</body>
+{include file="public/footer"}

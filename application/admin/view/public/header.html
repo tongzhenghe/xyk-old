@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/static/index/images/title.jpg" type="image/x-icon"/>
+    <title>心怡康医院</title>
+    {css href="/static/admin/layui/css/layui.css"}
+    {css href="/static/admin/css/font_eolqem241z66flxr.css"}
+    {css href="/static/admin/css/bootstrap.min.css"}
+    {css href="/static/admin/css/main.css"}
+    {css href="/static/admin/css/style.css"}
+    {js href="/static/admin/layui/lay/modules/layer.js"}
+    {js href="/static/admin/layui/layui.js"}
+    {js href="/static/admin/js/jquery-3.3.1.min.js"}
+    {js href="/static/admin/js/common.js"}
+    <!-- ueditor -->
+    {js href="/static/admin/ueditor/ueditor.config.js"}
+    {js href="/static/admin/ueditor/ueditor.all.js"}
+    {js href="/static/admin/ueditor/zh-cn.js"}
+    {css href="/static/css/BeAlert.css"}
+    {js href="/static/js/BeAlert.js"}
+    {js href="/static/admin/js/clipboard.js"}
+    <!-- ueditor_End -->
+    <style>
+      .layui-header {
+            border-bottom: none;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">心怡康养护院</div>
+        <div class="layui-tab layui-tab-brief"  lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title header-select" style="margin-left: 13%;">
+                <li class="{if !empty($point)}{if $point == 'web_set'}layui-this{/if}{/if}" data-url="<?php echo url('index/setting')?>?point=web_set"><i class="layui-icon layui-icon-set"></i>网站设置</li>
+                <li class="{if !empty($point)}{if $point == 'msg'}layui-this{/if}{/if}"  data-url="<?php echo url('index/message')?>?point=msg"><i class="layui-icon layui-icon-reply-fill"></i>留言管理</li>
+                <li class="{if !empty($point)}{if $point == 'clean'}layui-this{/if}{/if}" data-url="<?php echo url('index/clean')?>?point=clean"><i class="layui-icon layui-icon-fonts-clear"></i>刷新缓存</li>
+                <li class="{if !empty($point)}{if $point == 'log'}layui-this{/if}{/if}" data-url="<?php echo url('index/log')?>?point=log"><i class="layui-icon layui-icon-form"></i>操作日志</li>
+                <li class="{if !empty($point)}{if $point == 'admin'}layui-this{/if}{/if}" data-url="<?php echo url('index/admin')?>?point=admin"><i class="layui-icon layui-icon-group"></i>账号管理</li>
+                <li   style="float: right" class="layui-nav-item" id="logout" data-url="<?php echo url('admin/index/logout')?>" ><a href="javascript:;">退出</a></li>
+                <li style="float: right"  class="layui-nav-item">
+                    <a href="javascript:;" >
+                        <img src="{if !empty($userInfo)}{$userInfo.icon}{/if}" class="layui-nav-img">
+                        {if !empty($userInfo)} {$userInfo.username}{/if}
+                    </a>
+                    <!--<dl class="layui-nav-child">-->
+                    <!--<dd><a href="">基本资料</a></dd>-->
+                    <!--<dd><a href="">安全设置</a></dd>-->
+                    <!--</dl>-->
+                </li>
+            </ul>
+            <!--<div class="layui-tab-content"></div>-->
+        </div>
+
+        <!--<ul class="layui-nav layui-layout-right">-->
+          <!---->
+        <!--</ul>-->
+    </div>
+
+    <script>
+        layui.use('upload', function () {
+
+            var upload = layui.upload;
+
+            upload.render({
+
+                elem: '.uploads',
+
+                url: "/index.php/admin/index/uploads"
+
+                , before: function (obj) {
+                    console.log(obj)
+                    layer.load();
+
+                }
+
+                , done: function (res, index, upload) {
+                    console.log(res);
+
+                    //预览
+                    $("#test-upload-normal-img").attr('src', res.file);
+                    layer.closeAll('loading'); //关闭loading
+                }
+                , error: function (index, upload) {
+                    layer.closeAll('loading'); //关闭loading
+                }
+            });
+        });
+
+
+
+        //多图
+        layui.use('upload', function () {
+
+            var upload = layui.upload;
+
+            upload.render({
+
+                elem: '.uploadsse',
+
+                multiple: true,//多图
+
+                url: "/index.php/admin/index/uploads"
+
+                , before: function (obj) {
+
+
+                    layer.load();
+
+                }
+
+                , done: function (res, index, upload) {
+
+                    console.log(res);
+
+                    //预览
+                    $(".demos").append(' <span style="     top: -57px;   left:  5.042%;position: relative;"  class="layui-badge Eliminate">' +
+                        '<a href="javascript:;" style="    color: #fff;">删除</a>' +
+                        ' </span><img class="imageses" src="'+res.file+'" width="100px" style="    margin: 11px  -17px;">' +
+                        '');
+                    layer.closeAll('loading'); //关闭loading
+                }
+                , error: function (index, upload) {
+                    layer.closeAll('loading'); //关闭loading
+                }
+            });
+        });
+
+    </script>

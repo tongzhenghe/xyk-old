@@ -1,0 +1,18 @@
+﻿{include file="../application/index/view/wap/public/left.html" /}
+<div class="about">
+
+	{if !empty($asks_list)}
+	{foreach $asks_list as $vo}
+	<div class="News_box">
+    	<img src="{$vo.icon}" />
+        <ul>
+        	<li><?php if(is_serialized_string($vo['introduction'])): echo mb_substr (unserialize($vo['introduction']),0, 50, 'utf-8') ;?></li>
+        	<li><span>发布时间：<?php echo date('Y/m/d H:i:s', $vo['create_time'])?></span></li>
+        </ul>
+    </div>
+	{/foreach}
+	{/if}
+</div>
+
+<div class="Page"><a href="#">上一页</a><a href="#">下一页</a></div>
+{include file="../application/index/view/wap/public/footer.html" /}

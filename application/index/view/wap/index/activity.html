@@ -1,0 +1,26 @@
+
+{include file="../application/index/view/wap/public/left.html" /}
+<style type="text/css">
+</style>
+<div class="layui-tab">
+
+    <div class="layui-tab-content cate-ambient-demo">
+        <div class="layui-tab-item layui-show">
+            <div id="list">
+                <div class="task_item" id="item_2">
+                    <div class="task_item">
+                        {if !empty($activity)}
+                        {foreach activity as $vo}
+                        <ul class="activity">
+                            <li><a href="{url('index/activity')}?activity_id={$vo.id}&do=activity_detail"><img id="eeee" src="{$vo.icon}"  onclick="previewImg(this)"/></li>
+                            <li>{$vo.title}</li>
+                        </ul>
+                        {/foreach}
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="../application/index/view/wap/public/footer.html" /}

@@ -1,0 +1,31 @@
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+        <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+            {volist name="admin_nav" id="vo" }
+            <li class="layui-nav-item layui-nav-itemed" ><!--layui-nav-itemed-->
+                <a class="" href="{$vo.url}"> <i class="layui-icon"></i>{$vo.name}</a>
+                <ul class="layui-nav-child">
+                    {if !empty($vo.children)}
+                    {volist name="vo.children" id="vo2" }
+                    <?php $result = strpos( $url, $vo2['url'] );?>
+                    <li class="<?php if($result !==  false ):?>layui-this<?php Endif;?>"><a href="{$vo2.url}"><i class="layui-icon"></i><span>{$vo2.name}</span></a></li>
+                    {/volist}
+                    {/if}
+                </ul>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+<style>
+    /*.layui-layer-title{*/
+        /*display: none !important;*/
+    /*}*/
+    .layui-layer-content{
+        height: unset ;
+    }
+    .layui-layer-page{
+        height: unset !important;
+    }
+</style>

@@ -1,0 +1,150 @@
+{include file="index/public/commonmenu" /}
+<style>
+    .met-page {
+        height: 23% !important;
+    }
+</style>
+<section class="banner_met_11_6    banner-ny-h"
+         m-id='73' m-type="banner" data-hash="首页" data-title="首页">
+    <div class="banner">
+        <div class="banner-warpper">
+            <div class="banner-item"
+                 data-height="0|0|0"
+                 data-autoplayspeed="4000"
+                 data-src=""
+                 data-speed="1000">
+                <img src="/static/index/images/header_img.jpg"
+                     alt="/static/index/images/header_img.jpg">
+            </div>
+        </div>
+    </div>
+    <div class="banner-ctrl">
+        <span class="left"><i class="icon pe-angle-left"></i></span>
+        <span class="right"><i class="icon pe-angle-right"></i></span>
+    </div>
+    <div class="banner-bg"></div>
+    <div class="banner-next" m-id='73' m-type="banner">
+        <span class="next-text">
+            滑动查看下一页        </span>
+        <span class="next-icon">
+            <i class="icon pe-angle-down"></i>
+        </span>
+
+    </div>
+</section>
+
+<div class="subcolumn_nav_met_11_4" m-id='61' m-type='nocontent'>
+    <div class="container">
+        <div class="row">
+            <div class="clearfix">
+                <div class="subcolumn-nav">
+                    <ul class="subcolumn_nav_met_11_4-ul m-b-0 ulstyle">
+                        {if !empty($doctor_title)}
+                        {foreach $doctor_title as $vo}
+                        <li>
+                            <a href="<?php echo url('index/doctor', ['id' => $vo['id'], 'do' => 'detail'])?>" title="{$vo.name}" {if $vo.id == $data.id} style="     color: #ffffff; background: #f98a39;  border-radius: 2px;" {/if}  target='_self' class=' link'>{$vo.name}</a>
+                        </li>
+                        {/foreach}
+                        {/if}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 标准模式 -->
+<main class="product_list_detail_met_16_1 page met-showproduct pagetype1" m-id='39'>
+    <div class="met-showproduct-head page-content block-bg">
+        <div class="container">
+
+            {if !empty($data)}
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class='met-showproduct-list fngallery cover text-xs-center' id='met-imgs-slick' m-id='noset' m-type="displayimgs">
+                        <div class='slick-slide'>
+                            <a href='javascript:;' data-size='400x300' data-med='{$data.icon}' data-med-size='300x200' class='lg-item-box' data-src='' data-exthumbimage="{$data.icon}" data-sub-html='{$data.intro}'>
+                                <img  src ="{$data.icon}" onclick="$.fn.preview(this)" style="   width: 17%;"  class='img-fluid' alt='{$data.name}' />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="product-intro">
+                        <h1 class='m-t-0 font-size-24'>{$data.intro}</h1>
+                        <!--<p class='description'></p>-->
+                    </div>
+                </div>
+            </div>
+            {/if}
+
+        </div>
+    </div>
+    <div class="met-showproduct-body page-content">
+        <div class="container">
+            <div class="row">
+
+                <!-- 内容选项卡 -->
+                <div class="col-lg-9     pull-lg-right">
+
+                    <div class="row">
+                        <div class="panel panel-body m-b-0 product-detail" boxmh-mh >
+                            <ul class="nav nav-tabs nav-tabs-line m-b-20 met-showproduct-navtabs">
+                                <li class="nav-item">
+                                    <a
+                                            class='nav-link active
+                                                                        ' data-toggle="tab" href="#product-content0" data-get="product-details">详细信息</a>
+                                </li>
+                            </ul>
+                            <article class="tab-content">
+
+
+                                <section class="tab-pane met-editor clearfix animation-fade  active" id="product-content0">
+                                    {$data.description}
+                                    <div class="tag">
+                                        <span></span>
+                                        <a href="" title=""></a>
+                                    </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <!-- 内容选项卡 -->
+
+                <!-- 产品侧栏 -->
+                <div class="col-lg-3">
+                    <div class="row">
+                        <aside class="panel panel-body m-b-0 product-hot met-sidebar     leftsidebar" boxmh-h>
+                            <div class='sidebar-piclist'>
+                                <!--热门新闻-->
+                                <h3 class='m-0 font-size-16 font-weight-300'>相关了解</h3>
+
+                                <ul class='blocks-2 blocks-md-3 blocks-lg-100 m-t-20 text-xs-center imagesize sidebar-piclist-ul' data-scale='300x400'>
+                                    {if !empty($hot_asks)}
+                                    {foreach $hot_asks as $vo}
+                                    <li class='masonry-child'>
+                                        <a href='' title='{$vo.title}' class='block m-b-0' target='_blank'>
+                                            <img src="{$vo.icon}" class='cover-image' alt='{$vo.title}' height='100'></a>
+                                        <h4 class='m-t-10 m-b-0 font-size-14 text-md-center'>
+                                            <a href="<?php echo url('index/news')?>?id={$vo.id}" title='{$vo.title}' target='_blank'>{$vo.title}</a>
+                                        </h4>
+                                    </li>
+                                    {/foreach}
+                                    {/if}
+
+                                </ul>
+
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+                <!-- 产品侧栏 -->
+
+            </div>
+        </div>
+    </div>
+</main>
+<!-- 标准模式 -->
+
+
+{include file="index/public/footer" /}

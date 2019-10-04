@@ -1,0 +1,39 @@
+{js href="/static/admin/js/clipboard.js"}
+<div>
+    <!--需要被复制的对象1-->
+    推荐码：<span>123ssssss456</span>
+</div>
+<p>
+    <!--需要被复制的对象2-->
+    账号：<input type="text" value="654321" />
+</p>
+<button>复制按钮</button>
+
+<script>
+    //绑定点击事件
+    document.querySelector('button').onclick = copy();
+    function copy() {
+        //通过function复制
+        var clipboard = new Clipboard('button', {
+            // 通过target选择需要被复制的对象
+            target: function() {
+                return document.querySelector('span'); //复制标签文本
+                //return document.querySelector('input'); 复制文本框的值
+            }
+        });
+
+        clipboard.on('success', function(e) {
+            //复制成功之后的回调
+            console.log(e);
+            //提示：这里是个坑,需要手动销毁当前的clipboard,否则会触发两次事件
+            clipboard.destroy();
+        });
+
+        clipboard.on('error', function(e) {
+            alert('x')
+            //执行失败后需要做的事...
+            console.log(e);
+            clipboard.destroy();
+        });
+    }
+</script>

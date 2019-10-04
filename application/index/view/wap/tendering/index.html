@@ -1,0 +1,88 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/static/index/images/title.jpg" type="image/x-icon"/>
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>心怡康医院招标采购询价公告</title>
+    {css href="/static/index/wap/tendering/css/demo.css"}
+    {css href="/static/index/wap/tendering/css/style.css"}
+    {js href="/static/admin/js/jquery-3.3.1.min.js"}
+    {js href="/static/index/wap/tendering/js/self.js"}
+    {js href="/static/index/wap/tendering/js/jquery.qrcode.min.js"}
+    <!--{js href="/static/index/wap/tendering/js/document.js"}-->
+</head>
+<body id="by">
+<div >
+    <section class="aui-flexView">
+        <header class="aui-navBar aui-navBar-fixed">
+            <a href="javascript:;" class="aui-navBar-item" >
+                <!--<i class="icon icon-return"></i>-->
+            </a>
+            <div class="aui-center">
+                <div class="aui-search-box">
+                    <i class="icon icon-search"></i>
+                    <input type="text" value="{if !empty($keywords)}{$keywords}{/if}" placeholder="请输入器材名称">
+                </div>
+            </div>
+            <a href="javascript:;" class="aui-navBar-item search" style="    color: white;">
+               搜索
+            </a>
+        </header>
+        <section class="aui-scrollView">
+            <div class="aui-tab" data-ydui-tab>
+                <img src="/static/index/wap/tendering/img/logo.png" width="35px" style="     left: 31px;   position: absolute;  z-index: 999999;background-image: url(/static/index/wap/tendering/img/logo.png)">
+                <div class="divHeight">  心怡康医院招标采购询价公告</div>
+                <div class="tab-panel">
+                    <div class="tab-panel-item tab-active">
+
+                        {if !empty($goods)}
+                        {foreach $goods as $vo}
+                        <a href="javascript:;" class="aui-flex">
+                            <div class="aui-flex-box">
+                                <h2 class="submitting" id="{$vo.id}"><em>报价</em>{$vo.title}</h2>
+                                <div class="aui-list-info" style="    margin-bottom: 12%;">
+                                    <span ><img  src="/static/index/wap/tendering/img/user-001.png" alt=""></span>
+                                    <span>牛先生</span>
+                                    <span><img  class="call-tel" src="/static/index/wap/tendering/img/tel.png" alt=""></span>
+                                    <span> <h2 class="submitting" id="{$vo.id}"><em>立即报价</em></h2></span>
+                                    <!--<span><img src="/static/index/wap/tendering/img/qq.png" alt=""></span>-->
+                                </div>
+                                <div class="aui-time">
+                                  <em>  发布时间：{$vo.time}</em>
+                                </div>
+                            </div>
+                            <div  id="{$vo.id}" class="aui-plate-img submitting">
+                                <img src="{$vo.pic}" alt="">
+                            </div>
+                        </a>
+                        {/foreach}
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>
+</body>
+</html>
+
+<script>
+    $(function () {
+
+        $(".search").on("click", function () {
+            //获取关键字
+            var  keywords =  $(".icon-search").siblings("input").val();
+
+            window.location.href = "{url('tendering/index')}?keywords="+keywords;
+
+        });
+    });
+
+
+</script>

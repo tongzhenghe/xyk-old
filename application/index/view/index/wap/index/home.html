@@ -1,0 +1,176 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>肃州区心怡康养老服务中心</title>
+<link href="/static/index//ap/cs//styl/.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/static/index/wap/css/swiper.min.css">
+</head>
+<body>
+<!-- 头部导航 -->
+<div class="top">
+	<span class="lf"><img src="/static/index/wap/images/logo.jpg" height="100%" /></span>
+    <span class="rf"><button id="btnLeft"><img src="/static/index/wap/images/home.png" height="100%" /></button></span>
+</div>
+<div class="wrap">
+    <div class="layer-left">
+    	<a href="javascript:;">首页</a>
+    	<a href="javascript:;">心怡康简介</a>
+    	<a href="javascript:;">新闻资讯</a>
+    	<a href="javascript:;">服务项目</a>
+    	<a href="javascript:;">环境设施</a>
+    	<a href="javascript:;">收费标准</a>
+    	<a href="javascript:;">养老问答</a>
+    	<a href="javascript:;">养护知识</a>
+    	<a href="javascript:;">联系我们</a>
+    </div>
+</div>
+<script src="/static/index/wap/js/mSlider.min.js"></script>
+<script>
+	window.onload = function () {
+		//移动端使用touchend
+		var event = navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i) ? 'touchend' : 'click';
+		// 选择器
+		var Q = function (id) {
+			return document.getElementById(id)
+		};
+		//方向控制
+		//左
+		var _left = new mSlider({
+			dom: ".layer-left"
+		});
+		Q('btnLeft').addEventListener(event, function () {
+			_left.open();
+		})
+		Q('btnLeft1').addEventListener(event, function () {
+			_left.open();
+		})
+	}
+</script>
+
+<!-- banner切换 -->
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="/static/index/wap/images/banner_01.jpg" width="100%" /></div>
+    <div class="swiper-slide"><img src="/static/index/wap/images/banner_02.jpg" width="100%" /></div>
+    <div class="swiper-slide"><img src="/static/index/wap/images/banner_03.jpg" width="100%" /></div>
+    <div class="swiper-slide"><img src="/static/index/wap/images/banner_04.jpg" width="100%" /></div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+<script src="/static/index/wap/js/swiper.min.js"></script>
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay:5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
+
+<!-- 类目 -->
+<div class="Category">
+	<a href="javascript:;"><img src="/static/index/wap/images/c_01.png" />走进心怡康</a>
+	<a href="javascript:;"><img src="/static/index/wap/images/c_02.png" />新闻资讯</a>
+	<a href="javascript:;"><img src="/static/index/wap/images/c_03.png" />服务项目</a>
+	<a href="javascript:;"><img src="/static/index/wap/images/c_04.png" />环境设施</a>
+	<a href="javascript:;"><img src="/static/index/wap/images/c_05.png" />收费标准</a>
+	<a href="javascript:;"><img src="/static/index/wap/images/c_06.png" />养老问答</a>
+	<a href="javascript:;"><img src="/static/index/wap/images/c_07.png" />养护知识</a>
+	<a href="javascript:;"><img src="/static/index/wap/images/c_08.png" />联系我们</a>
+</div>
+
+<!-- 新闻 -->
+<div class="New">
+	<div class="New_title"><span>新闻资讯</span><img src="/static/index/wap/images/ico_02.png" /><a href="javascript:;">更多 >></a></div>
+    <div class="New_box">
+    	<div class="New_pic">
+        	<img src="/static/index/wap/images/pic_01.jpg" />
+            <p>
+            	<b>肃州区养老服务中心心怡康医院，这里的文字最少需要两行,最多3行！多出将被裁剪。</b>
+                <span>发布：2019-02-14</span>
+            </p>
+        </div>
+    	<div class="New_pic">
+        	<img src="/static/index/wap/images/project_01.jpg" />
+            <p>
+            	<b>肃州区养老服务中心心怡康医院，这里的文字最少需要两行,最多3行！多出将被裁剪。</b>
+                <span>发布：2019-02-14</span>
+            </p>
+        </div>
+    	<div class="New_pic" style="border:none">
+        	<img src="/static/index/wap/images/project_02.jpg" />
+            <p>
+            	<b>肃州区养老服务中心心怡康医院，这里的文字最少需要两行,最多3行！多出将被裁剪。</b>
+                <span>发布：2019-02-14</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- 服务项目 -->
+<div class="project">
+	<div class="title"><img src="/static/index/wap/images/ico_01.png" />服务项目</div>
+    <div class="project_box">
+    	<a href="javascript:;"><img src="/static/index/wap/images/project_01.jpg" /><span><b>护</b><p>医疗团队&nbsp;&nbsp;专业护养</p></span></a>
+    	<a href="javascript:;"><img src="/static/index/wap/images/project_02.jpg" /><span><b>养</b><p>饮食起居&nbsp;&nbsp;全面照料</p></span></a>
+    	<a href="javascript:;"><img src="/static/index/wap/images/project_03.jpg" /><span><b>康</b><p>专业技师&nbsp;&nbsp;康复理疗</p></span></a>
+    	<a href="javascript:;"><img src="/static/index/wap/images/project_04.jpg" /><span><b>食</b><p>营养膳食&nbsp;&nbsp;合理搭配</p></span></a>
+    	<a href="javascript:;"><img src="/static/index/wap/images/project_05.jpg" /><span><b>乐</b><p>活动丰富&nbsp;&nbsp;老有所乐</p></span></a>
+    	<a href="javascript:;"><img src="/static/index/wap/images/project_06.jpg" /><span><b>智</b><p>最新科技&nbsp;&nbsp;服务升级</p></span></a>
+    </div>
+</div>
+
+<!-- 养老问答 -->
+<div class="Question">
+	<div class="title"><img src="/static/index/wap/images/ico_03.png" />养老问答</div>
+    <div class="Question_box">
+    	<dl>
+        	<dt>目前很多养老公寓要收赞助费，祈福肃州区养护院心怡康医院是否也这样操作？</dt>
+            <dd>2019-02-14</dd>
+        </dl>
+    	<dl>
+        	<dt>我就是路过瞧一瞧，养老都有哪些问答？</dt>
+            <dd>2019-02-14</dd>
+        </dl>
+    	<dl>
+        	<dt>我是养老问答，这里是问题的标题，最多显示两行，不要太多了哦！</dt>
+            <dd>2019-02-14</dd>
+        </dl>
+    </div>
+</div>
+
+<!-- 环境设施 -->
+<div class="surroundings">
+	<div class="title"><img src="/static/index/wap/images/ico_05.png" />环境设施</div>
+    <div class="surroundings_box">
+    	<img src="/static/index/wap/images/surroundings_01.jpg" />
+    	<img src="/static/index/wap/images/surroundings_02.jpg" />
+    	<img src="/static/index/wap/images/surroundings_03.jpg" />
+    	<img src="/static/index/wap/images/surroundings_04.jpg" />
+    </div>
+    <img src="/static/index/wap/images/Contact.jpg" width="100%" />
+</div>
+
+
+
+
+
+
+
+<ul class="Nav">
+	<li class="Nav_l1"><img src="/static/index/wap/images/Nav_01.png" />在线咨询</li>
+	<li class="Nav_l2"><img src="/static/index/wap/images/Nav_02.png" />来电咨询</li>
+	<li class="Nav_l3" id="btnLeft1"><img src="/static/index//ap/im/ges/N/v_03.png" />导&nbsp;&nbsp;&nbsp;航</li>
+</ul>
+
+</body>
+</html>

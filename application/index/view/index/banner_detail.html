@@ -1,0 +1,15 @@
+{include file="index/public/header" /}
+<div class="centent">
+    <div class="centent_title">走进心怡康WALK IN</div>
+    {if !empty($detail)}
+    <div class="centent_box">
+        <div class="class"><a href="/">首页</a>&nbsp;&nbsp;>&nbsp;&nbsp;走进心怡康</div>
+        <div class="titles">走进心怡康</div>
+        <div class="time">发布时间：{$detail.create_time}</div>
+        <div class="centent_text">
+       {$detail.content}
+        </div>
+    </div>
+    {/if}
+</div>
+{include file="index/public/footer" /}

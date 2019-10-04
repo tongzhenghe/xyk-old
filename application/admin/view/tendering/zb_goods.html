@@ -1,0 +1,95 @@
+{include file="public/header"}
+{include file="public/left"}
+<body class="childrenBody" style="overflow-y: scroll; ">
+<blockquote class="layui-elem-quote news_search lefts">
+    <div class="layui-inline">
+        <a class="layui-btn layui-btn-sm  layui-btn-normal" href="javascript: window.history.go(0);">招标商品</a>
+        <a class="layui-btn layui-btn-sm  layui-btn-normal newsAdd_btn" href="{url('admin/tendering/zb_goods')}?point=_add">添加列表</a>
+        <a class="layui-btn layui-btn-sm  layui-btn-normal newsAdd_btn" href="">回收站</a>
+    </div>
+    <div class="layui-inline">
+        <form class="layui-form layui-form-pane" action="">
+            <label class="layui-form-label">商品</label>
+            <div class="layui-input-block">
+                <input type="text" <?php if (!empty($like)):?> value="{$like}" <?php Endif;?> name="keywords"  placeholder="请输入标题/id" autocomplete="off" class="layui-input"><!--lay-verify="required" -->
+                <button style="    position: absolute; left: 100%;  bottom: 10%;" class="layui-btn layui-btn-sm layui-btn-normal" lay-submit="search" lay-filter="search"> <i class="layui-icon layui-icon-search"></i>搜索
+                </button>
+            </div>
+        </form>
+    </div>
+</blockquote>
+<div class="layui-form news_list lefts">
+    <table class="layui-table">
+        <colgroup>
+            <col width="1%">
+            <col width="8%">
+            <col width="2%">
+            <col width="2%">
+            <col width="2%">
+            <col width="5%">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>(ID)</th>
+            <th>器材名称</th>
+            <th>状态</th>
+            <th>所需数量</th>
+            <th>规格型号</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody class="news_content">
+        {if !empty($list)}
+        {volist name="list" id="vo"}
+        <tr>
+            <td>{$vo.id}</td>
+            <td align="left">
+                <p style="float: left">
+                    <a href="javascript:;"><img src="{$vo.pic}" alt="{$vo.title}" width="45px" onclick="previewImg(this)"></a>
+                    <span style="color: #0092dc;;">名称：</span> {$vo.title}
+                </p>
+            </td>
+            <td style="overflow:visible;">
+                {if $vo.status == 1}
+                <a href="javascript:;"> <span id="switch{$vo.status}" class="switch" data-switch-value="2" data-point=""
+                                              data-id="{$vo.id}" data-field="status" data-do="_status">通过</span></a>
+                {else}
+                <a href="javascript:;"> <span id="switch{$vo.status}" class="switch" data-switch-value="1"
+                                              data-id="{$vo.id}" data-field="status" data-do="_status">未通过</span></a>
+                {/if}
+            </td>
+
+            <td align="left">
+                    {$vo.num}&nbsp;&nbsp;{$vo.company}
+            </td>
+              <td align="left">
+                规格
+            </td>
+
+            <td>
+                <a href="{url('admin/tendering/zb_goods')}?point=_add&id={$vo.id}">
+                  编辑
+                </a>
+
+                <a>
+                    <button class="layui-btn layui-btn-primary layui-btn-xs delete-data" data-id="{$vo.id}"
+                            data-url="{url('admin/tendering/zb_goods')}"><i class="layui-icon"></i></button>
+                </a>
+            </td>
+        </tr>
+        {/volist}
+        <tr>
+            <td colspan="9">
+                <div> {$list->render()}
+                    <ul class="pagination">
+                        <li><span class="nobg">共{$total}条记录</span><span class="nobg">当前页：第{$page}页</span></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        {/if}
+        </tbody>
+    </table>
+</div>
+</body>
+{include file="public/footer"}

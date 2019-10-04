@@ -1,0 +1,124 @@
+{include file="public/header"}
+{include file="public/left"}
+<body class="childrenBody" style="overflow-y: scroll; ">
+<blockquote class="layui-elem-quote news_search lefts">
+    <div class="layui-inline">
+        <a class="layui-btn layui-btn-sm  layui-btn-normal"
+           href="javascript: window.history.go(0);">报价列表</a>
+        <a class="layui-btn layui-btn-sm  layui-btn-normal newsAdd_btn">回收站</a>
+    </div>
+    <div class="layui-inline">
+        <form class="layui-form layui-form-pane" action="">
+            <label class="layui-form-label">产品</label>
+            <div class="layui-input-block">
+                <select name="goods_id" lay-filter="goods-select" lay-verify="" lay-search>
+                    <option></option>
+                    {if !empty($goods)}
+                    {volist name="goods" id="vo"}
+                    <option class="sort-goods" value="{$vo.id}" {if !empty($goods_id) && $goods_id == $vo.id}selected{/if}>{$vo.title}</option><!--selected-->
+                    {/volist}
+                    {/if}
+                </select>
+            </div>
+        </form>
+    </div>
+</blockquote>
+
+<style>
+    .layui-table th {
+        font-weight: 700;
+    }
+</style>
+<div class="layui-form news_list lefts">
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>对应产品</th>
+            <th>厂家联系人</th>
+            <th>厂家联系方式</th>
+            <th>报价时间</th>
+            <th>厂家地址</th>
+            <th>厂家出售规格</th>
+            <th>出售单价</th>
+            <th>对方出售数量</th>
+            <th>报价单位</th>
+            <th>厂家名称</th>
+            <th>厂家资质</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody class="news_content">
+        {if !empty($merchant_msg)}
+        {volist name="merchant_msg" id="vo"}
+        <tr>
+            <td align="left">
+                <p style="float: left">
+                 <img src="{$vo.goods_pic}" class="ww" width="25px" onclick="previewImg(this)">
+               商品名称：<a href="<?php echo url('tendering/zb_goods')?>?id={$vo.goods_id}&point=_add"> {$vo.goods_title}</a>
+                </p>
+            </td>
+            <td align="left">
+                &nbsp;&nbsp;{$vo.merchant_name}
+            </td>
+
+            <td align="left">
+                <span id="copy{$vo.id}">  {$vo.merchant_tel}</span>
+                <button data-id="{$vo.id}" class="layui-btn layui-btn-xs  layui-btn-success copy">复制</button>
+            </td>
+
+            <td align="left">
+                 {$vo.sub_time}
+            </td>
+
+           <td align="left">
+                 {$vo.merchant_address}
+            </td>
+
+            <td align="left">
+                {$vo.specifications}
+            </td>
+
+            <td align="left">
+                 {$vo.single_price}
+            </td>
+
+            <td align="left">
+                 {$vo.num}
+            </td>
+
+            <td align="left">
+                {$vo.num}&nbsp;&nbsp;{$vo.company}
+            </td>
+
+            <td align="left">
+                 {$vo.manufactor}
+            </td>
+            <td align="center">
+                <a  class="see_aptitude" href="javasctipt:;" data-id="{$vo.id}">查看</a>
+            </td>
+            <td>
+                <a ><button class="layui-btn layui-btn-danger layui-btn-xs delete-data"  data-id="{$vo.id}"  data-url="{url('admin/tendering/merchant_msg')}"><i class="layui-icon" ></i></button></a>
+
+            </td>
+        </tr>
+        {/volist}
+        {/if}
+        <!--<tr>-->
+            <!--&lt;!&ndash;-分页&ndash;&gt;-->
+        <!--</tr>-->
+        </tbody>
+    </table>
+</div>
+{if empty($merchant_msg)}
+<div class="none-data lefts">
+    暂时没有数据
+</div>
+{/if}
+
+</body>
+{include file="public/footer"}
+<script>
+    layui.use('form', function(){
+        var form = layui.form();
+    });
+</script>

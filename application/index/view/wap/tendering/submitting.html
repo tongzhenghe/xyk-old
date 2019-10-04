@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+<html style="background-color:#FFFFFF;">
+<head>
+    <meta charset="utf-8" />
+    <meta name="wap-font-scale" content="no">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>申请报价</title>
+    <meta name="apple-mobile-web-app-capable" content="no" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    {css href="/static/index/wap/tendering/css/MultiPicker.css"}
+    {css href="/static/index/wap/tendering/css/pandastar.css"}
+    {js href="/static/index/wap/tendering/js/rembasic.js"}
+    <!--{js href="/static/index/wap/tendering/js/document.js"}-->
+    <style>
+        .aui-list-info span img {
+            float: left;
+            width: 18px;
+            height: 18px;
+            display: block;
+            border: none;
+        }
+        .aui-list-info span {
+            float: left;
+            display: block;
+            margin-right: 0.3rem;
+            font-size: 0.7rem;
+            line-height: 1.5;
+            color: #616161;
+        }
+        .aui-flex-box h2 em {
+            background: #1980cd;
+            color: #fff;
+            font-style: normal;
+            border-radius: 2px;
+            font-size: 0.2rem;
+            margin-right: 0.3rem;
+            margin-left: 0.3rem;
+        }
+        .submitting{
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .aui-list-info{
+            margin-left: 17px;
+        }
+        .pc{
+            display: block;
+            height: auto;
+            overflow: hidden;
+            font-size: 10px;
+            margin: 0 auto;
+            margin-left: 13px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="body-container">
+    <div class="aui-flex-box" style="margin-left: 3px;margin-top: 13%; width: 98%; border-radius: 4px; background: #03a9f475">
+        <p class="pc" style="font-size: 10px; color: red; font-weight: 700;">关于公开询价采购医疗设备的公告:</p>
+        <p class="pc" style="font-size: 10px;">
+            为了满足医院发展，我院拟购置一批医疗器材，详情请查阅器材清单。现请生产、销售此类医疗器材的厂家、销售公司参与，请上传相关资质证书、彩页资料等及业绩证明材料。请于2019年3月10日前填写器材相关信息，上传相关资质至线上询价系统。
+        </p>
+    </div>
+    <div class="aui-flex-box" style=" margin-top: 3%;">
+        <img src="{if !empty($goods_info.pic)}{$goods_info.pic}{/if}" style="    float: right;  margin: 0 10%;" width="55px"  onclick=" previewImg(this)" >
+        <h2 class="submitting" ><em style="    float: left;">报价商品：</em>{if !empty($goods_info.title)}{$goods_info.title}{/if}</h2>
+        <h2 class="submitting" ><em >规格/类型：</em>{if !empty($goods_info.specifications)}{$goods_info.specifications}{/if}</h2>
+        <div class="aui-list-info">
+            <span><img src="/static/index/wap/tendering/img/user-001.png" alt=""></span>
+            <span style="    font-size: 12px;">牛先生</span>
+            <span><img class="call-tel" src="/static/index/wap/tendering/img/tel.png" alt=""></span>
+        </div>
+    </div>
+    <div class="toper-wrap">
+        <div class="toper-box">
+            <div class="toper-left" style="padding:0;">
+                <a class="cb-sgin" href="">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="toper-middle" style="padding:0;">
+                申请报价
+            </div>
+
+        </div>
+    </div>
+    <div class="datawrap1">
+        <div class="databox">
+            <div class="databox-left">
+                <div class="databox-left-ct">
+                    联系人姓名：
+                </div>
+            </div>
+            <div class="databox-right">
+                <input class="text-input" type="text" name="merchant_name" id="merchant_name" value="" placeholder="请填写联系人姓名" maxlength="200"/>
+            </div>
+        </div>
+         <div class="databox">
+                    <div class="databox-left">
+                        <div class="databox-left-ct">
+                            <span style="color: red;">*</span> 厂家名称：
+                        </div>
+                    </div>
+                    <div class="databox-right">
+                        <input class="text-input" type="text" name="manufactor" id="manufactor" value="" placeholder="请填写入厂家名称" maxlength="200"/>
+                    </div>
+                </div>
+
+        <div class="databox">
+            <div class="databox-left">
+                <div class="databox-left-ct">
+                    <span style="color: red;">*</span>  厂家联系方式：
+                </div>
+            </div>
+            <div class="databox-right"><!--class="age-input"-->
+                <input class="text-input"   type="text" name="merchant_tel" id="merchant_tel" value="" placeholder="请填写入厂家联系方式"/>
+            </div>
+        </div>
+        <div class="databox">
+            <div class="databox-left">
+                <div class="databox-left-ct">
+                    <span style="color: red;">*</span>     厂家地址：
+                </div>
+                <div class="databox-left-et">
+                    提示：请填写详细联系方式。
+                </div>
+            </div>
+            <div class="databox-right">
+                <input class="text-input height-input" type="text" name="merchant_address" id="merchant_address" value="" placeholder="请填写厂家地址" maxlength="200"/>
+            </div>
+        </div>
+        <div class="databox">
+            <div class="databox-left">
+                <div class="databox-left-ct">
+                    <span style="color: red;">*</span>  报价：
+                </div>
+            </div>
+            <div class="databox-right">
+                <span class="cmtip">&nbsp;￥</span>
+                <input class="text-input height-input" type="text" name="single_price" id="single_price" value="" placeholder="请填写价格" maxlength="200"/>
+            </div>
+        </div>
+
+          <div class="databox">
+            <div class="databox-left">
+                <div class="databox-left-ct">
+                   型号/规格：
+                </div>
+                <div class="databox-left-et">
+                    注意:如有多种规格请以逗号分隔。
+                </div>
+            </div>
+            <div class="databox-right">
+                <input class="text-input height-input" type="text" name="specifications" id="specifications" value="" placeholder="规格" maxlength="200"/>
+            </div>
+        </div>
+       <div class="databox">
+        <div class="databox-left">
+                <div class="databox-left-ct">
+                    <span style="color: red;">*</span>    数量：
+                </div>
+            </div>
+            <div class="databox-right">
+                <input class="text-input height-input" type="text" name="num" id="num" value="" placeholder="数量" maxlength="200"/>
+            </div>
+        </div>
+        <div class="databox">
+            <div class="databox-left">
+                <div class="databox-left-ct">
+                    <span style="color: red;">*</span>  单位：
+                </div>
+                <div class="databox-left-et">
+                  例如：个|把|双。
+                </div>
+            </div>
+            <div class="databox-right">
+                <input class="text-input height-input" type="text" name="company" id="company" value="" placeholder="单位" maxlength="200"/>
+            </div>
+        </div>
+
+        <div class="databox" style="    margin-bottom: 34px;">
+            <div class="databox-left">
+                <div class="databox-left-ct">
+                    上传资质：
+                </div>
+                <div class="databox-left-et">
+                   提示： 请上传相关资质证书、彩页资料等及业绩证明材料。
+                </div>
+            </div>
+            <div class="databox-right">
+                {css href="/static/admin/layui/css/layui.css"}
+                {js href="/static/admin/layui/layui.js"}
+                <button type="button" class="layui-btn layui-btn-sm uploadsse layui-btn-normal">
+                    <i class="layui-icon">&#xe67c;</i>点击上传
+                </button>
+            </div>
+        </div>
+        <!--<div class="databox">-->
+            <!--<div class="databox-left">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--性别-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Sex-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right">-->
+                <!--<input class="text-input sex-input" type="text" name="" id="sex-input" value="" placeholder="请选择" readonly/>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div class="demos">
+        <?php  if( !empty($find_data['pic']) && is_array($find_data['pic'])):?>
+        {foreach $find_data.pic as $vo}
+        <span style="    left:  5.042%;position: relative;"
+              class="layui-badge Eliminate">
+                        <a href="javascript:;" style="    color: #fff;">删除</a>
+                        </span><img class="imageses" src="{$vo}" width="100px" style="    margin: 11px  -25px;">
+        {/foreach}
+        <?php Endif;?>
+    </div>
+
+    <!--<div class="datawrap2">-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--微信号-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--We chat-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right">-->
+                <!--<input class="text-input" type="text" name="" id="" value="" placeholder="微信号" maxlength="50"/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--邮箱-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--E-Mail-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right">-->
+                <!--<input class="text-input" type="text" name="" id="" value="" placeholder="邮箱" maxlength="128"/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left" style="width:41%;">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--国籍及地区-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Nationality and area-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right" style="width:59%;">-->
+                <!--<input class="text-input Nationality-input" type="text" name="" id="Nationality-input" value="" placeholder="国籍" readonly/>-->
+                <!--<input class="text-input area-input" type="text" name="" id="area-input" value="" placeholder="请选择地区" readonly/>-->
+                <!--<input class="text-input foreign-area-input" type="text" name="" id="foreign-area-input" value="" placeholder="请填写地区" maxlength="200"/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--选择赛区-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Choose division-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right">-->
+                <!--<input class="text-input division-input" type="text" name="" id="division-input" value="" placeholder="请选择赛区" readonly/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left" style="width:61%;">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--身份证/护照号码-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Identity card/passport number-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right" style="width:39%;">-->
+                <!--<input class="text-input" type="text" name="" id="" value="" placeholder="身份证/护照号码" maxlength="200"/>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+    <!--<div class="datawrap5">-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--家长联系电话-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Parents of telephone-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right">-->
+                <!--<input class="text-input" type="text" name="" id="" value="" placeholder="家长联系电话" maxlength="11"/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="databox databox-b0">-->
+            <!--<div class="databox-left" style="width:21%;">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--家庭住址-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Address-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right" style="width:79%;">-->
+                <!--<input class="text-input Nationality-input2" type="text" name="" id="Nationality-input2" value="" placeholder="选择国家" readonly/>-->
+                <!--<input class="text-input area-input2" type="text" name="" id="area-input2" value="" placeholder="请选择地区" readonly/>-->
+                <!--<input class="text-input foreign-area-input2" type="text" name="" id="foreign-area-input2" value="" placeholder="请填写地区" maxlength="200"/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="databox-addr">-->
+            <!--<div class="databox-addr-box">-->
+                <!--<textarea class="textarea-input" name="" id="symptomTxt" oninput="autoTextAreaHeight(this)" placeholder="请填入详细地址" maxlength="200"></textarea>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="datawrap1 dataw-margint">-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--推荐机构-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Recommendation agency-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right">-->
+                <!--<input class="text-input" type="text" name="" id="" value="" placeholder="推荐机构" maxlength="50"/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--组别-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Group-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right">-->
+                <!--<input class="text-input Group-input" type="text" name="" id="Group-input" value="" placeholder="请选择组别" readonly/>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left" style="width:61%;">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--是否参加走T台-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Whether or not attend Image-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right" style="width:39%;">-->
+                <!--<input class="text-input attend-input" type="text" name="" id="attend-input" value="" placeholder="请选择" readonly/>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="datawrap1 dataw-margint">-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--作品要求-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--Entry Requirements-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right">-->
+                <!--<div class="Entry-Requirements">-->
+                    <!--细节详见大赛文创本要求-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="datawrap1 dataw-margint">-->
+        <!--<div class="databox">-->
+            <!--<div class="databox-left">-->
+                <!--<div class="databox-left-ct">-->
+                    <!--家长/监护人-->
+                <!--</div>-->
+                <!--<div class="databox-left-et">-->
+                    <!--The parent or guardian-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="databox-right">-->
+                <!--<input class="text-input" type="text" name="" id="" value="" placeholder="请填写家长/监护人" maxlength="50"/>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="signupDataSumbit-wrap">
+        <input type="hidden" name="goods_id" value="{$goods_info.id}">
+        <input class="sinputSumbit" type="submit" name="" style="    border-radius: 5px;
+    background-color: #1980cd;" value="提交">
+    </div>
+    <!--<div class="input-errortip" style="top:50%;">-->
+        <!--输入错误-->
+    <!--</div>-->
+    <!--&lt;!&ndash;年龄选择容器&ndash;&gt;-->
+    <!--<div id="age-targetContainer"></div>-->
+    <!--&lt;!&ndash;性别选择容器&ndash;&gt;-->
+    <!--<div id="sex-targetContainer"></div>-->
+    <!--&lt;!&ndash;国籍选择容器&ndash;&gt;-->
+    <!--<div id="Nationality-targetContainer"></div>-->
+    <!--&lt;!&ndash;地区选择容器&ndash;&gt;-->
+    <!--<div id="area-targetContainer"></div>-->
+    <!--&lt;!&ndash;地址国籍选择容器&ndash;&gt;-->
+    <!--<div id="Nationality-targetContainer2"></div>-->
+    <!--&lt;!&ndash;地址地区选择容器&ndash;&gt;-->
+    <!--<div id="area-targetContainer2"></div>-->
+    <!--&lt;!&ndash;组别选择容器&ndash;&gt;-->
+    <!--<div id="Group-targetContainer"></div>-->
+    <!--&lt;!&ndash;是否参加走T台选择容器&ndash;&gt;-->
+    <!--<div id="attend-targetContainer"></div>-->
+    <!--&lt;!&ndash;赛区选择&ndash;&gt;-->
+    <!--<div id="division-targetContainer"></div>-->
+</div>
+
+<script src="/static/admin/js/jquery-3.3.1.min.js"></script>
+<script src="/static/index/wap/tendering/js/self.js"></script>
+
+<script src="/static/index/wap/tendering/js/MultiPicker.js" type="text/javascript" charset="utf-8"></script>
+
+<!--<script type="text/javascript">-->
+    <!--//选择年龄-->
+    <!--new MultiPicker({-->
+        <!--input: 'age-input',//点击触发插件的input框的id-->
+        <!--container: 'age-targetContainer',//插件插入的容器id-->
+        <!--jsonData: [{-->
+            <!--value: '6',-->
+        <!--}, {-->
+            <!--value: '7',-->
+        <!--}, {-->
+            <!--value: '8',-->
+        <!--}, {-->
+            <!--value: '9',-->
+        <!--}, {-->
+            <!--value: '10',-->
+        <!--}, {-->
+            <!--value: '11',-->
+        <!--}, {-->
+            <!--value: '12',-->
+        <!--}, {-->
+            <!--value: '13',-->
+        <!--}, {-->
+            <!--value: '14',-->
+        <!--}, {-->
+            <!--value: '15',-->
+        <!--}, {-->
+            <!--value: '16',-->
+        <!--}, {-->
+            <!--value: '17',-->
+        <!--}, {-->
+            <!--value: '18',-->
+        <!--}, {-->
+            <!--value: '19',-->
+        <!--}, {-->
+            <!--value: '20',-->
+        <!--}, {-->
+            <!--value: '21',-->
+        <!--}, {-->
+            <!--value: '22',-->
+        <!--}, {-->
+            <!--value: '23',-->
+        <!--}, {-->
+            <!--value: '24',-->
+        <!--}],-->
+        <!--success: function (arr) {-->
+            <!--$('.age-input').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+        <!--}//回调-->
+    <!--});-->
+    <!--//选择性别-->
+    <!--new MultiPicker({-->
+        <!--input: 'sex-input',//点击触发插件的input框的id-->
+        <!--container: 'sex-targetContainer',//插件插入的容器id-->
+        <!--jsonData: [{-->
+            <!--value: '男',-->
+        <!--}, {-->
+            <!--value: '女',-->
+        <!--}],-->
+        <!--success: function (arr) {-->
+            <!--$('.sex-input').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+        <!--}//回调-->
+    <!--});-->
+    <!--//选择赛区-->
+    <!--new MultiPicker({-->
+        <!--input: 'division-input',//点击触发插件的input框的id-->
+        <!--container: 'division-targetContainer',//插件插入的容器id-->
+        <!--jsonData: [{-->
+            <!--value: '粤港澳赛区',-->
+        <!--}, {-->
+            <!--value: '东三省赛区',-->
+        <!--}],-->
+        <!--success: function (arr) {-->
+            <!--$('.division-input').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+        <!--}//回调-->
+    <!--});-->
+    <!--//选择国籍-->
+    <!--new MultiPicker({-->
+        <!--input: 'Nationality-input',//点击触发插件的input框的id-->
+        <!--container: 'Nationality-targetContainer',//插件插入的容器id-->
+        <!--jsonData: [{-->
+            <!--value: '中国',-->
+        <!--}, {-->
+            <!--value: '海外',-->
+        <!--}],-->
+        <!--success: function (arr) {-->
+            <!--var nationality=JSON.stringify(arr[0].value).replace(/\"/g,"");-->
+            <!--if(nationality=='中国'){-->
+                <!--$('.area-input').show();-->
+                <!--$('.foreign-area-input').hide();-->
+                <!--$('.Nationality-input').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+            <!--}else{-->
+                <!--$('.area-input').hide();-->
+                <!--$('.foreign-area-input').show();-->
+                <!--$('.Nationality-input').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+            <!--}-->
+
+        <!--}//回调-->
+    <!--});-->
+    <!--//选择地区-->
+    <!--new MultiPicker({-->
+        <!--input: 'area-input',//点击触发插件的input框的id-->
+        <!--container: 'area-targetContainer',//插件插入的容器id-->
+        <!--jsonData: [{-->
+            <!--value: '北京市',-->
+        <!--}, {-->
+            <!--value: '上海市',-->
+        <!--}, {-->
+            <!--value: '天津市',-->
+        <!--}, {-->
+            <!--value: '重庆市',-->
+        <!--}, {-->
+            <!--value: '黑龙江省',-->
+        <!--}, {-->
+            <!--value: '吉林省',-->
+        <!--}, {-->
+            <!--value: '辽宁省',-->
+        <!--}, {-->
+            <!--value: '山东省',-->
+        <!--}, {-->
+            <!--value: '山西省',-->
+        <!--}, {-->
+            <!--value: '陕西省',-->
+        <!--}, {-->
+            <!--value: '河北省',-->
+        <!--}, {-->
+            <!--value: '河南省',-->
+        <!--}, {-->
+            <!--value: '湖北省',-->
+        <!--}, {-->
+            <!--value: '湖南省',-->
+        <!--}, {-->
+            <!--value: '海南省',-->
+        <!--}, {-->
+            <!--value: '江苏省',-->
+        <!--}, {-->
+            <!--value: '江西省',-->
+        <!--}, {-->
+            <!--value: '广东省',-->
+        <!--}, {-->
+            <!--value: '广西壮族自治区',-->
+        <!--}, {-->
+            <!--value: '云南省',-->
+        <!--}, {-->
+            <!--value: '贵州省',-->
+        <!--}, {-->
+            <!--value: '四川省',-->
+        <!--}, {-->
+            <!--value: '内蒙古自治区',-->
+        <!--}, {-->
+            <!--value: '宁夏回族自治区',-->
+        <!--}, {-->
+            <!--value: '甘肃省',-->
+        <!--}, {-->
+            <!--value: '青海省',-->
+        <!--}, {-->
+            <!--value: '西藏自治区',-->
+        <!--}, {-->
+            <!--value: '新疆维吾尔自治区',-->
+        <!--}, {-->
+            <!--value: '安徽省',-->
+        <!--}, {-->
+            <!--value: '浙江省',-->
+        <!--}, {-->
+            <!--value: '福建省',-->
+        <!--}, {-->
+            <!--value: '台湾省',-->
+        <!--}, {-->
+            <!--value: '香港特别行政区',-->
+        <!--}, {-->
+            <!--value: '澳门特别行政区',-->
+        <!--}],-->
+        <!--success: function (arr) {-->
+            <!--$('.area-input').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+        <!--}//回调-->
+    <!--});-->
+    <!--//地址选择国籍-->
+    <!--new MultiPicker({-->
+        <!--input: 'Nationality-input2',//点击触发插件的input框的id-->
+        <!--container: 'Nationality-targetContainer2',//插件插入的容器id-->
+        <!--jsonData: [{-->
+            <!--value: '中国',-->
+        <!--}, {-->
+            <!--value: '海外',-->
+        <!--}],-->
+        <!--success: function (arr) {-->
+            <!--var nationality=JSON.stringify(arr[0].value).replace(/\"/g,"");-->
+            <!--if(nationality=='中国'){-->
+                <!--$('.area-input2').show();-->
+                <!--$('.foreign-area-input2').hide();-->
+                <!--$('.Nationality-input2').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+            <!--}else{-->
+                <!--$('.area-input2').hide();-->
+                <!--$('.foreign-area-input2').show();-->
+                <!--$('.Nationality-input2').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+            <!--}-->
+
+        <!--}//回调-->
+    <!--});-->
+    <!--//地址选择地区-->
+    <!--new MultiPicker({-->
+        <!--input: 'area-input2',//点击触发插件的input框的id-->
+        <!--container: 'area-targetContainer2',//插件插入的容器id-->
+        <!--jsonData: [{-->
+            <!--value: '北京市',-->
+        <!--}, {-->
+            <!--value: '上海市',-->
+        <!--}, {-->
+            <!--value: '天津市',-->
+        <!--}, {-->
+            <!--value: '重庆市',-->
+        <!--}, {-->
+            <!--value: '黑龙江省',-->
+        <!--}, {-->
+            <!--value: '吉林省',-->
+        <!--}, {-->
+            <!--value: '辽宁省',-->
+        <!--}, {-->
+            <!--value: '山东省',-->
+        <!--}, {-->
+            <!--value: '山西省',-->
+        <!--}, {-->
+            <!--value: '陕西省',-->
+        <!--}, {-->
+            <!--value: '河北省',-->
+        <!--}, {-->
+            <!--value: '河南省',-->
+        <!--}, {-->
+            <!--value: '湖北省',-->
+        <!--}, {-->
+            <!--value: '湖南省',-->
+        <!--}, {-->
+            <!--value: '海南省',-->
+        <!--}, {-->
+            <!--value: '江苏省',-->
+        <!--}, {-->
+            <!--value: '江西省',-->
+        <!--}, {-->
+            <!--value: '广东省',-->
+        <!--}, {-->
+            <!--value: '广西壮族自治区',-->
+        <!--}, {-->
+            <!--value: '云南省',-->
+        <!--}, {-->
+            <!--value: '贵州省',-->
+        <!--}, {-->
+            <!--value: '四川省',-->
+        <!--}, {-->
+            <!--value: '内蒙古自治区',-->
+        <!--}, {-->
+            <!--value: '宁夏回族自治区',-->
+        <!--}, {-->
+            <!--value: '甘肃省',-->
+        <!--}, {-->
+            <!--value: '青海省',-->
+        <!--}, {-->
+            <!--value: '西藏自治区',-->
+        <!--}, {-->
+            <!--value: '新疆维吾尔自治区',-->
+        <!--}, {-->
+            <!--value: '安徽省',-->
+        <!--}, {-->
+            <!--value: '浙江省',-->
+        <!--}, {-->
+            <!--value: '福建省',-->
+        <!--}, {-->
+            <!--value: '台湾省',-->
+        <!--}, {-->
+            <!--value: '香港特别行政区',-->
+        <!--}, {-->
+            <!--value: '澳门特别行政区',-->
+        <!--}],-->
+        <!--success: function (arr) {-->
+            <!--$('.area-input2').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+        <!--}//回调-->
+    <!--});-->
+    <!--//详细地址栏输入下拉效果-->
+    <!--function autoTextAreaHeight(o) {-->
+        <!--o.style.height = o.scrollTop + o.scrollHeight + "px";-->
+    <!--}-->
+    <!--$(function () {-->
+        <!--var ele = document.getElementById("symptomTxt");-->
+        <!--autoTextAreaHeight(ele);-->
+    <!--})-->
+    <!--//选择组别-->
+    <!--new MultiPicker({-->
+        <!--input: 'Group-input',//点击触发插件的input框的id-->
+        <!--container: 'Group-targetContainer',//插件插入的容器id-->
+        <!--jsonData: [{-->
+            <!--value: '设计组',-->
+        <!--}, {-->
+            <!--value: '表演组',-->
+        <!--}],-->
+        <!--success: function (arr) {-->
+            <!--$('.Group-input').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+        <!--}//回调-->
+    <!--});-->
+    <!--//是否参加走T台-->
+    <!--new MultiPicker({-->
+        <!--input: 'attend-input',//点击触发插件的input框的id-->
+        <!--container: 'attend-targetContainer',//插件插入的容器id-->
+        <!--jsonData: [{-->
+            <!--value: '是',-->
+        <!--}, {-->
+            <!--value: '否',-->
+        <!--}],-->
+        <!--success: function (arr) {-->
+            <!--$('.attend-input').attr('value',JSON.stringify(arr[0].value).replace(/\"/g,""));-->
+        <!--}//回调-->
+    <!--});-->
+    <!--//吸顶效果-->
+    <!--$(window).scroll(function(){-->
+        <!--var scrollTop = $(window).scrollTop();-->
+        <!--if(scrollTop >0){-->
+            <!--$(".toper-box").stop(true,true).fadeIn();-->
+        <!--}else{-->
+            <!--$(".toper-box").stop(true,true).fadeIn();-->
+        <!--};-->
+    <!--});-->
+<SCRIPT>
+
+    //多图
+    layui.use('upload', function () {
+
+        var upload = layui.upload;
+
+        upload.render({
+
+            elem: '.uploadsse',
+
+            multiple: true,//多图
+
+            url: "/index.php/index/tendering/uploads"
+
+            , before: function (obj) {
+
+                layer.load();
+
+            }
+
+            , done: function (res, index, upload) {
+
+                console.log(res.file);
+
+                //预览
+                $(".demos").append(' <span style="  \n' +
+                    '    left: 22.042%;\n' +
+                    '    position: relative;"  class="layui-badge Eliminate">' +
+                    '<a href="javascript:;" style="    color: #fff;">删除</a>' +
+                    ' </span><img class="imageses"   src="'+res.file+'" width="100px" style="  margin: 11px 15px;" >' +
+                    '');
+                layer.closeAll('loading'); //关闭loading
+            }
+            , error: function (index, upload) {
+                layer.closeAll('loading'); //关闭loading
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
+

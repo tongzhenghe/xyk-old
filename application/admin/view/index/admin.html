@@ -1,0 +1,76 @@
+{include file="public/header"}
+{include file="public/left"}
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <div class="layui-card layadmin-header">
+            <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+                <a lay-href="">首页</a><span lay-separator="">/</span>
+                <a><cite>账号管理</cite></a><span lay-separator="">/</span>
+                <a><cite>修改密码</cite></a>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-header"><cite>当前位置：</cite><span>修改密码</span></div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <div class="layui-form">
+                        <div class="layui-form" style=" width: 50%;    margin: 0 auto;">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">用户名：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username"
+                                           value="{if !empty($userInfo.username)}{$userInfo.username}{/if}" {if !empty($userInfo)} disabled style="background: #e8e8e8;" {/if}
+                                    autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                                </div>
+                                <!-- lay-verify="required"-->
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">  {if !empty($userInfo)}新密码{else} 输入密码{/if}：</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="password" autocomplete="off"
+                                           placeholder="  {if !empty($userInfo)}请输入新密码{else} 请输入密码{/if}" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">  {if !empty($userInfo)}确认新密码{else} 确认密码{/if}：</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="repassword" autocomplete="off"
+                                           placeholder="请输入确认密码" class="layui-input">
+                                </div>
+                            </div>
+                            {if !empty($userInfo)}
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">旧密码：</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="oldpassword" autocomplete="off"
+                                           placeholder="请输入旧密码 " class="layui-input">
+                                </div>
+                            </div>
+                            {/if}
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">管理人员头像：</label>
+                                <div class="layui-input-block">
+                                    <button type="button" class="layui-btn uploads layui-btn-normal">
+                                        <i class="layui-icon">&#xe67c;</i>选择图片
+                                    </button>
+                                    <div class="layui-upload-list" style="margin: 10px 0;">
+                                        <img class="layui-upload-img" id="test-upload-normal-img" {if
+                                             !empty($userInfo.icon)} src="{$userInfo.icon}" {/if}>
+                                        <p id="test-upload-demoText"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-footer" style="margin: 0 auto;">
+                                <button class="layui-btn layui-btn-normal layui-btn-sm {if !empty($userInfo)}valid_login{else}add_admin{/if}">+ 提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm ">返回列表</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}
+
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页</title>
+    {css href="/static/admin/layui/css/layui.css"}
+    {css href="/static/admin/login/css/style.css"}
+</head>
+<body style="background-image: url(/static/admin/icon/top.jpg); background-repeat: repeat-x;" >
+<div class="login-main">
+    <header class="layui-elip">  <img src="/static/admin/login/imgs/logo.png" width="60px" /> 新怡康医院</header>
+    <form class="layui-form">
+        <div class="layui-input-inline">
+            <input type="text" name="username" value="{if !empty($_user)}{$_user.username}{/if}" required lay-verify="required" placeholder="请输入用户名"  autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <input type="password" name="password"  value="{if !empty($_user)}{$_user.password}{/if}" required lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <input type="text" name="captcha" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input" style="width: 50%;">
+            <a  href="javascript:;"> <img src="{:captcha_src()}" style="float: right; margin-top: -10%;" class="verify" onclick="javascript:this.src='{:captcha_src()}?rand='+Math.random()" ></a>
+            <div class="layui-form-mid layui-word-aux">点击验证码图片刷新</div>
+        </div>
+        <div class="layui-input-inline">
+                <input type="checkbox" name="is_remember" title="记住我方便下次登录"  {if  !empty($_user)} {if $_user.is_remember == 1} checked {/if}{/if}><div class="layui-unselect layui-form-checkbox layui-form-checked"><i class="layui-icon layui-icon-ok"></i></div>
+        </div>
+        <div class="layui-input-inline login-btn">
+            <input lay-submit lay-filter="login" type="button" class="layui-btn layui-btn-normal  btn-submit-login" value="登录">
+        </div>
+        <!--<div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-primary">QQ登录</button>
+        </div>
+        <div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-normal">微信登录</button>
+        </div>-->
+        <!--<p><a href="register.html" class="fl">立即注册</a><a href="javascript:;" class="fr">忘记密码？</a></p>-->
+    </form>
+</div>
+{js href="/static/admin/layui/layui.js"}
+<script>
+    layui.use(['form','layer','jquery'], function () {
+        // // 操作对象
+        var form = layui.form;
+        var $ = layui.jquery;
+        form.on('submit(login)',function (data) {
+            data.field.is_remember =data.field.is_remember  === 'on' ?  1 : 2;
+
+            $.ajax({
+
+                url: "{url('admin/index/login')}",
+
+                data:data.field,
+
+                dataType:'json',
+
+                type:'post',
+
+                success:function (response) {
+
+                    if ( response.code === 200 && response.status === true ) {
+
+                        layer.msg(response.msg, {
+
+                            time: 2000 ,
+
+                            maxWidth: 850,
+
+                        }, function() {
+
+                            window.location.href = response.url ? response.url : url;
+
+                        });
+
+                    } else {
+
+                        layer.msg(response.msg, {
+
+                            icon: 2,
+
+                            time: 2000 ,
+
+                            maxWidth: 850,
+
+                        }, function () {
+                            window.location.href = response.url ? response.url : url;
+                        });
+
+                    }
+
+                }
+
+            });
+
+            return false;
+
+        });
+
+    });
+</script>
+</body>
+</html>

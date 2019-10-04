@@ -1,0 +1,163 @@
+{include file="public/header"}
+{include file="public/left"}
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <div class="layui-card layadmin-header">
+            <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+                <a lay-href="">首页</a><span lay-separator="">/</span>
+                <a><cite>床位列表</cite></a><span lay-separator="">/</span>
+                <a><cite>添加</cite></a>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-header"><cite>当前位置：</cite><span>添加床位</span></div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <div class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">顺序：</label>
+                            <div class="layui-input-block">
+                                <input type="number" name="sort" lay-verify="required" {if !empty($find_data.sort)}
+                                       value="{$find_data.sort}{/if}" placeholder="顺序"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">名称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" {if !empty($find_data.title)}
+                                       value="{$find_data.title}{/if}" lay-verify="title" lay-verify="required" autocomplete="off"
+                                       placeholder="名称" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">床位价格：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="price" {if !empty($find_data.price)}
+                                       value="{$find_data.price}{/if}" lay-verify="price" lay-verify="required" autocomplete="off"
+                                       placeholder="￥" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">简介：</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" lay-verify="required" name="intro" class="layui-textarea"><?php if(!empty($find_data['intro'])):?>{$find_data.intro}<?php Endif?></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">详情：</label>
+                            <div class="layui-input-block">
+                                <div class="field">
+                                    <script id="container" name="content" type="text">
+                                         {present name="find_data"}{$find_data.content} {/present}
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否推荐：</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="is_recommend" title="是" {if !empty($find_data)} {if
+                                       $find_data.is_recommend== 1} checked {/if}{/if}>
+                                <div class="layui-unselect layui-form-checkbox layui-form-checked"><i
+                                        class="layui-icon layui-icon-ok"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否热门：</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="is_hot" title="是" {if !empty($find_data)} {if
+                                       $find_data.is_hot== 1} checked {/if}{/if}>
+                                <div class="layui-unselect layui-form-checkbox layui-form-checked"><i
+                                        class="layui-icon layui-icon-ok"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" pane="">
+                            <label class="layui-form-label">床位类型：</label>
+                            <div class="layui-input-block">
+
+                                <input type="radio" name="bed" value="5" title="家庭间"   {if  !empty($find_data) && $find_data.bed == 5} checked="" {/if}>
+                                <div class="layui-unselect layui-form-radio layui-form-radioed"><i
+                                        class="layui-anim layui-icon layui-anim-scaleSpring"></i>
+                                    <div>家庭间</div>
+                                </div>
+
+                                <input type="radio" name="bed" value="1" title="单人间" {if !empty($find_data) && $find_data.bed == 1} checked="" {/if}>
+                                <div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i>
+                                    <div>单人间</div>
+                                </div>
+
+                                <input type="radio" name="bed" value="2" title="双人间"   {if  !empty($find_data) && $find_data.bed == 2} checked="" {/if}>
+                                <div class="layui-unselect layui-form-radio layui-form-radioed"><i
+                                        class="layui-anim layui-icon layui-anim-scaleSpring"></i>
+                                    <div>双人间</div>
+                                </div>
+
+                                <input type="radio" name="bed" value="3" title="三人间"   {if  !empty($find_data) && $find_data.bed == 3} checked="" {/if}>
+                                <div class="layui-unselect layui-form-radio layui-form-radioed"><i
+                                        class="layui-anim layui-icon layui-anim-scaleSpring"></i>
+                                    <div>三人间</div>
+                                </div>
+
+                                <input type="radio" name="bed" value="6" title="六人间"   {if  !empty($find_data) && $find_data.bed == 6} checked="" {/if}>
+                                <div class="layui-unselect layui-form-radio layui-form-radioed"><i
+                                        class="layui-anim layui-icon layui-anim-scaleSpring"></i>
+                                    <div>六人间</div>
+                                </div>
+
+                                <input type="radio" name="bed" value="7" title="陪护间"   {if  !empty($find_data) && $find_data.bed == 7} checked="" {/if}>
+                                <div class="layui-unselect layui-form-radio layui-form-radioed"><i
+                                        class="layui-anim layui-icon layui-anim-scaleSpring"></i>
+                                    <div>陪护间</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">上传封面图：</label>
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn layui-btn-sm uploads layui-btn-normal">
+                                    <i class="layui-icon">&#xe67c;</i>上传封面图
+                                </button>
+                                <div class="layui-upload-list" style="margin: 10px 0;">
+                                    <img class="layui-upload-img" id="test-upload-normal-img" {if
+                                         !empty($find_data.icon)} src="{$find_data.icon}" {/if}>
+                                    <p id="test-upload-demoText"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">多图：</label>
+                            <button type="button" class="layui-btn layui-btn-sm uploadsse layui-btn-normal">
+                                <i class="layui-icon">&#xe67c;</i>上传多图
+                            </button>
+                            <div class="demos">
+                                <?php  if( !empty($find_data['pic']) && is_array($find_data['pic'])):?>
+                                {foreach $find_data.pic as $vo}
+                                <span style="     top: -57px;   left:  5.042%;position: relative;"
+                                      class="layui-badge Eliminate">
+                        <a href="javascript:;" style="    color: #fff;">删除</a>
+                        </span><img class="imageses" src="{$vo}" width="100px" style="    margin: 11px  -17px;">
+                                {/foreach}
+                                <?php Endif;?>
+                            </div>
+                        </div>
+
+                        <div class="layui-footer" style="margin: 0 auto;width: 15%;">
+                            {if !empty($find_data.id)}
+                            <input type="hidden" name="hidId" value="{$find_data.id}">
+                            {/if}
+                            <button class="layui-btn layui-btn-sm layui-btn-normal add_bed">+ 提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm ">返回列表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}

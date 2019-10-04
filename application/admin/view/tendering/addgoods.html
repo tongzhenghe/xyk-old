@@ -1,0 +1,70 @@
+{include file="public/header"}
+{include file="public/left"}
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <div class="layui-card layadmin-header">
+            <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+                <a lay-href="">首页</a><span lay-separator="">/</span>
+                <a><cite>招标产品</cite></a><span lay-separator="">/</span>
+                <a><cite>添加</cite></a>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-header"><cite>当前位置：</cite><span>添加产品</span></div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <div class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">商品名称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" {if !empty($find_data.title)}
+                                       value="{$find_data.title}{/if}" lay-verify="title" lay-verify="required" autocomplete="off"
+                                       placeholder="名称" class="layui-input">
+                            </div>
+                        </div>
+
+                         <div class="layui-form-item">
+                                <label class="layui-form-label">所需数量：</label>
+                                <div class="layui-input-block">
+                                    <input type="number" name="num" style=" float: left;width: 58%;" {if !empty($find_data.num)} value="{$find_data.num}{/if}" lay-verify="title" lay-verify="required" autocomplete="off" placeholder="数量" class="layui-input">
+                                    <label class="layui-form-label">单位：</label><input type="text" name="company" style="    width: 14.2%;" {if !empty($find_data.company)} value="{$find_data.company}{/if}"  lay-verify="required" autocomplete="off" class="layui-input">
+                                    <div class="layui-form-mid layui-word-aux">例如：单位：个。</div>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">规格：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="specifications" {if !empty($find_data.specifications)} value="{$find_data.specifications}{/if}" lay-verify="title" lay-verify="required" autocomplete="off" placeholder="规格" class="layui-input">
+                                    <div class="layui-form-mid layui-word-aux">注意： 如需填写多规格请以“英式逗号分隔（,）。</div>
+                                </div>
+                            </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">上传商品图：</label>
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn layui-btn-sm uploads layui-btn-normal">
+                                    <i class="layui-icon">&#xe67c;</i>点击上传
+                                </button>
+                                <div class="layui-upload-list" style="margin: 10px 0;">
+                                    <img class="layui-upload-img" id="test-upload-normal-img" {if
+                                         !empty($find_data.pic)} src="{$find_data.pic}" {/if} src="/static/admin/icon/nopic.png">
+                                    <p id="test-upload-demoText"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-footer" style="margin: 0 auto;width: 15%;">
+                            {if !empty($find_data.id)}
+                            <input type="hidden" name="hidId" value="{$find_data.id}">
+                            {/if}
+                            <button class="layui-btn layui-btn-sm layui-btn-normal add_zb_goods">+ 提交</button>
+                           <a href="javascript: window.history.go(-1);"> <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm ">返回列表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <link rel="shortcut icon" href="/static/index/images/title.jpg" type="image/x-icon"/>
+    <title>肃州区心怡康养老服务中心</title>
+    <link href="/static/index/wap/css/style.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/static/index/wap/css/swiper.min.css">
+    <!--layui-->
+    {css href="/static/admin/layui/css/layui.css"}
+    {js href="/static/admin/layui/layui.js"}
+    {js href="/static/admin/js/jquery-3.3.1.min.js"}
+    {js href="/static/index/wap/js/common.js"}
+    <!--layui-->
+</head>
+<body >
+<!-- 头部导航 -->
+<div class="top">
+    <span class="lf"><img src="/static/index/wap/images/logo.jpg" height="100%" /></span>
+    <span class="rf"><button id="btnLeft"><i class="layui-icon layui-icon-spread-left" style="       color: #1e924a; font-size: 30px;" ></i><i class="layui-icon layui-icon-shrink-right" style="   display: none;    color: #1e924a; font-size: 30px;" ></i></button></span>
+</div>
+<div class="wrap">
+    <div class="layer-left">
+        {if !empty($menu)}
+        {foreach $menu as $vo}
+        <a href="{$vo.url}">{$vo.title}</a>
+        {/foreach}
+        {/if}
+    </div>
+</div>
+<script src="/static/index/wap/js/mSlider.min.js"></script>
+<script>
+    window.onload = function () {
+        //移动端使用touchend
+        var event = navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i) ? 'touchend' : 'click';
+        // 选择器
+        var Q = function (id) {
+            return document.getElementById(id);
+        };
+        //方向控制
+        //左
+        var _left = new mSlider({
+            dom: ".layer-left"
+        });
+        Q('btnLeft').addEventListener(event, function () {
+            _left.open();
+            $(".layui-icon-spread-left").hide();
+            $(".layui-icon-shrink-right").show();
+        });
+
+        Q('btnLeft1').addEventListener(event, function () {
+            _left.open();
+        })
+    }
+</script>

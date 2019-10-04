@@ -1,0 +1,79 @@
+{include file="public/header"}
+{include file="public/left"}
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <div class="layui-card layadmin-header">
+            <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+                <a lay-href="">首页</a><span lay-separator="">/</span>
+                <a><cite>院内环境</cite></a><span lay-separator="">/</span>
+                <a><cite>添加</cite></a>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-header"><cite>当前位置：</cite><span>入院流程添加</span></div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <div class="layui-form" >
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">标题：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title"  value="{if !empty($find_data.title)}{$find_data.title}{/if}" lay-verify="title" autocomplete="off"
+                                       placeholder="标题" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">图标：</label>
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn uploads layui-btn-normal">
+                                    <i class="layui-icon">&#xe67c;</i>选择图片
+                                </button>
+                                <div class="layui-upload-list" style="margin: 10px 0;">
+                                    <img class="layui-upload-img" id="test-upload-normal-img" style=" background: #e2e2e2; width: 30%;margin: 0 10px 10px 0;" {if !empty($find_data.icon)} src="{$find_data.icon}" {/if}>
+                                    <p id="test-upload-demoText"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">简介：</label>
+                            <div class="layui-input-block">
+                                <textarea name="intro" required lay-verify="required" placeholder="请输入简介" class="layui-textarea" style="width: 55%">{if (!empty($find_data.intro))}{$find_data.intro}{/if}</textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">关键词：</label>
+                            <div class="layui-input-block">
+                                <textarea name="keywords" required lay-verify="required"
+                                          placeholder="keywords" class="layui-textarea" style="width: 55%">{if (!empty($find_data.keywords))}{$find_data.keywords}{/if}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">新闻详情：</label>
+                            <div class="layui-input-block">
+                        <div class="field" >
+                            <script id="container"  name="content" type="text"> {present name="find_data"}{$find_data.content} {/present}</script>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">推荐首页：</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="is_recommend" title="是"  {if  !empty($find_data)} {if $find_data.is_recommend == 1} checked {/if}{/if}><div class="layui-unselect layui-form-checkbox layui-form-checked"><i class="layui-icon layui-icon-ok"></i></div>
+                            </div>
+                        </div>
+                        <div class="layui-footer" style="margin: 0 auto;width: 15%;">
+                            {if !empty($find_data.id)}
+                            <input type="hidden"  name="hidId" value="{$find_data.id}">
+                            {/if}
+                            <button class="layui-btn layui-btn-normal layui-btn-sm add_news">+ 提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm ">返回列表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}
+
+

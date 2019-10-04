@@ -1,0 +1,57 @@
+{include file="public/header"}
+{include file="public/left"}
+<body class="childrenBody" style="overflow-y: scroll; ">
+<blockquote class="layui-elem-quote news_search lefts">
+    <div class="layui-inline">
+        <a class="layui-btn layui-btn-sm  layui-btn-normal" href="javascript: window.history.go(0);" >留言记录</a>
+        <a class="layui-btn layui-btn-sm layui-btn-normal selected-msg"href="javascript:;">标为全部已读</a>
+    </div>
+    <div class="layui-inline">
+        <form class="layui-form layui-form-pane" action="">
+            <label class="layui-form-label">用户/id</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" required="" lay-verify="required" placeholder="请输入用户名/id" autocomplete="off" class="layui-input">
+                <button style="    position: absolute; left: 100%;  bottom: 10%;" class="layui-btn layui-btn-sm layui-btn-normal" lay-submit="search" lay-filter="search">
+                    <i class="layui-icon layui-icon-search"></i>搜索</button>
+            </div>
+        </form>
+    </div>
+</blockquote>
+<div class="layui-form news_list lefts">
+    <table class="layui-table" lay-skin="row">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>昵称</th>
+            <th>tel</th>
+            <th>用户留言</th>
+            <th>时间</th>
+            <th>用户ip</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php if(!empty($message)):?>
+        {volist name="message" id="vo"}
+        <tr>
+            <th>{$vo.user_name}</th>
+            <th>{$vo.tel}</th>
+            <th>{$vo.msg}</th>
+            <th><?php  echo date('Y/m/d H:i:s', $vo['time'])?></th>
+            <th>{$vo.user_ip}</th>
+            <th >
+                <a href="javascript:;" class="msg-selecting"><span class="layui-badge layui-bg-orange">查看留言</span></a>
+            <a href="javascript:;" class="msg-delete"><i class="layui-icon layui-icon-edit"></i>删除</a>
+            </th>
+        </tr>
+        {/volist}
+        <?php Endif;?>
+        </tbody>
+    </table>
+</div>
+</body>
+{include file="public/footer"}

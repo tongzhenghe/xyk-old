@@ -1,0 +1,37 @@
+﻿{include file="../application/index/view/wap/public/left.html" /}
+<style>
+</style>
+<div class="about">
+    <div class="about_title"><p>{$newsinfo.name}</p></div>
+    <div class="about_time">发布时间：{$newsinfo.create_time}</div>
+    <div class="about_text">
+    <img src="{$newsinfo.pic}" width="100%" />
+     {$newsinfo.content}
+    </div>
+</div>
+<div class="Page"><a href="<?php echo url('index/home')?>?m=banner&id={$newsinfo.id}&do=detail&point=up_paging"
+	<?php if( !empty($up_disabled)):;?> onclick="return false;" style="color:#9e9e9e;  cursor: default"<?php Endif;?>>
+	<?php if( !empty($up_disabled)):;?>没有了<?php else:?>上一篇<?php Endif;?>
+	</a>
+	<a href="<?php echo url('index/home')?>?m=banner&id={$newsinfo.id}&do=detail&point=down_paging"
+	<?php if( !empty($down_disabled)):;?> onclick="return false;" style="color:#9e9e9e;  cursor: default"<?php Endif;?>>
+
+	<?php if( !empty($down_disabled)):;?>没有了<?php else:?>下一篇<?php Endif;?>
+	</a></div>
+<div class="Related">
+    <div class="Related_title">相关阅读</div>
+
+	<div class="Question_box">
+		{if !empty($hot_asks)}
+		{foreach $hot_asks as $vo}
+	<div class="News_box">
+    	<img src="{$vo.icon}"/>
+        <ul>
+        	<li><?php if(is_serialized_string($vo['introduction'])): echo mb_substr (unserialize($vo['introduction']),0, 30, 'utf-8') ;?>.....<?php Endif;?></li>
+        	<li><span>发布时间：<?php echo date('Y/m/d H:i:s', $vo['create_time'])?></span></li>
+        </ul>
+    </div>
+		{/foreach}
+		{/if}
+</div>
+{include file="../application/index/view/wap/public/footer.html" /}

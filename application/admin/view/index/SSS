@@ -1,0 +1,61 @@
+title
+
+intro
+
+keywords
+
+       <div class="layui-form-item">
+                            <label class="layui-form-label">标题：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" {if !empty($find_data.title)}
+value="{$find_data.title}{/if}" lay-verify="title" autocomplete="off"
+                                       placeholder="title" class="layui-input">
+                            </div>
+                        </div>
+
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">简介：</label>
+                            <div class="layui-input-block">
+                                <textarea name="intro" required lay-verify="required"
+placeholder="intro" class="layui-textarea" style="width: 55%">{if (!empty($find_data.intro))}
+{$find_data.intro}{/if}</textarea>
+                            </div>
+                        </div>
+
+
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">关键词：</label>
+                            <div class="layui-input-block">
+                                <textarea name="keywords" required lay-verify="required"
+placeholder="keywords" class="layui-textarea" style="width: 55%">{if (!empty($find_data.keywords))}
+{$find_data.keywords}{/if}</textarea>
+                            </div>
+                        </div>
+
+
+
+JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:
+
+title = $("input[ name='title']").val(),
+intro = $("textarea[name='intro']").val()
+,keywords = $("textarea[name='keywords']").val(),
+
+title:title, intro:intro, keywords:keywords,
+
+JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS:JS
+
+
+PHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHP
+
+if (empty($post['title'])) $post['title'] = null;
+if (empty($post['intro'])) $post['intro'] = null;
+if (empty($post['keywords'])) $post['keywords'] = null;
+
+
+'title' => trim($post['title']),
+'intro' => trim($post['intro']),
+'keywords' => trim($post['keywords']),
+
+PHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHPPHP

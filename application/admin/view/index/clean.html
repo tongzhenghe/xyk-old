@@ -1,0 +1,30 @@
+{include file="public/header"}
+{include file="public/left"}
+<body class="childrenBody" style="overflow-y: scroll; ">
+<div class="row" style="width: 100%;margin-top: 50px; text-align: center;">
+    <button type="button" class="btn btn-w-m btn-primary" data-url="{url(index/clean)}?do=clean_cache">清除缓存</button>
+    <button type="button" class="btn btn-w-m btn-primary" data-url="{url(index/clean)}?do=clean_log">清除日志</button>
+</div>
+</body>
+{include file="public/footer"}
+
+<script>
+
+    $(function () {
+        $(":button").on("click", function () {
+            var url = $(this).attr("data-url");
+            if (url) {
+                layer.open({
+                    title: '警告！',
+                    content: '您确定要进行此操作吗？'
+                    , btn: ['确定', '取消']
+                    , yes: function (index, layero) {
+                        //回调
+                        formData = {do: true};
+                        $.fn.setRequest(formData, url);
+                    }
+                });
+            }
+        });
+    });
+</script>

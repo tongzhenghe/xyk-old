@@ -1,0 +1,64 @@
+{include file="public/header"}
+{include file="public/left"}
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <div class="layui-card layadmin-header">
+            <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+                <a lay-href="">首页</a><span lay-separator="">/</span>
+                <a><cite>分类添加</cite></a>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-header"><cite>当前位置：</cite><span>添加服务分类</span></div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <div class="layui-form" >
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">顺序：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="sort" lay-verify="required" {if !empty($cate_find.sort)}  value="{$cate_find.sort}{/if}"  placeholder="顺序"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">分类名称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" {if !empty($cate_find.title)} value="{$cate_find.title}{/if}" lay-verify="title" autocomplete="off"
+                                       placeholder="分类名称" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">简介：</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" name="intr" class="layui-textarea"><?php if(!empty($cate_find['intr'])):  echo $cate_find['intr']; ?><?php Endif;?></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">分类图标：</label>
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn uploads layui-btn-normal">
+                                    <i class="layui-icon">&#xe67c;</i>选择图片
+                                </button>
+                                <div class="layui-upload-list" style="margin: 10px 0;">
+                                    <img class="layui-upload-img" id="test-upload-normal-img" style=" background: #e2e2e2; width: 92px; height: 92px;margin: 0 10px 10px 0;" {if !empty($cate_find.image)} src="{$cate_find.image}" {/if}>
+                                    <p id="test-upload-demoText"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-footer" style="margin: 0 auto;width: 15%;">
+                            {if !empty($cate_find.id)}
+                            <input type="hidden"  name="hidId" value="{$cate_find.id}">
+                            {/if}
+                            <button class="layui-btn layui-btn-sm layui-btn-normal addactivitycategory">+ 提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm ">返回列表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}
+
+

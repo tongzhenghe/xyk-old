@@ -1,0 +1,61 @@
+﻿{include file="../application/index/view/wap/public/left.html" /}
+<div class="about">
+
+    {if !empty($news)}
+    {foreach $news as $vo}
+    <div class="News_box">
+        <img src="{$vo.icon}"/>
+        <ul>
+            <li>
+                <a href="{url('index/news')}?id={$vo.id}"><?php if(is_serialized_string($vo['introduction'])): echo mb_substr(unserialize($vo['introduction']),0, 35, 'utf-8') ;?><?php else:?> <?php echo mb_substr($vo['introduction'],0, 35, 'utf-8') ;?><?php Endif;?>
+                    .....</a></li>
+            <li><span>发布时间：<?php echo date('Y/m/d H:i:s', $vo['create_time'])?></span></li>
+        </ul>
+    </div>
+    {/foreach}
+    {/if}
+</div>
+
+<div class="Page">
+    <!--加载状态-->
+    <div class="no-more" id="show_more"><span class="layui-badge" style="padding: 8px;">加载更多...</span></div>
+
+    <input type="hidden" id="offect" value="1" />
+</div>
+{include file="../application/index/view/wap/public/footer.html" /}
+
+<script>
+
+//     $(window).scroll(
+//         function () {
+//             var scrollTop = $(this).scrollTop();
+//             var scrollHeight = $(document).height();
+//             var windowHeight = $(this).height();
+//
+//             if (scrollTop + windowHeight == scrollHeight) {
+//                 $(".Page").html('数据加载中');
+//                 $.post('{:url("index/news")}', {offect: 1, do: 1}, function (data) {
+// alert('data'+data)
+//
+//                     if (data != -1) {
+//                         var to_array = eval("(" + data + ")");
+//                         var str = "";
+//                         for (var p in to_array) {
+//                             str += '<div class="News_box">\n' +
+//                                 '    \t<img src="" />\n' +
+//                                 '   <ul>\n' +
+//                                 '<li><a href="javascript:;">简介</a></li>\n' +
+//                                 ' <li><span>发布时间：2019/2/1</span></li>\n' +
+//                                 '  </ul>\n' +
+//                                 '</div>';
+//                         }
+//                         // $("#offect").val($offect*1+8);
+//                         $(".about").before(str);
+//                     } else {
+//                         $("#show_more").html('没有更多数据了');
+//                     }
+//                 }, 'json');
+//             }
+//         });
+
+</script>

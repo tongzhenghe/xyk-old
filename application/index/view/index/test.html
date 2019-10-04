@@ -1,0 +1,62 @@
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    .mlztx {
+        /*opacity: .6;*/
+        width: 70px;
+        height: 70px;
+        border-radius: 60px;
+        background-color: #068ffd;
+        position: fixed;
+        bottom: 200px;
+        right: 20px;
+        font-size: 30px;
+        text-align: center;
+        line-height: 55px;
+        color: #fff;
+        transition: all 1s ease 0s;
+        z-index: 99
+    }
+
+    .mlztx:hover {
+        opacity: 1;
+        background-color: #00b1ff;
+        width: 65px;
+        height: 65px
+    }
+
+    .msagely pre {
+        padding: 5px;
+        font-size: 12px;
+        background-color: #fff;
+        border: 1px dashed #CCCCCC;
+    }
+
+    .mlz::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+
+    .mlztx span {
+        position: absolute;
+        top: 14px;
+        line-height: 70px;
+        right: 13px;
+        font-size: 12px;
+    }
+
+    .mlztx {
+        animation: ripple 0.6s linear 500;
+    }
+
+    @keyframes ripple {
+        0% {
+            box-shadow: 0 0 0 0 rgba(93, 190, 219, 0.2), 0 0 0 10px rgba(93, 190, 219, 0.2), 0 0 0 20px rgba(93, 190, 219, 0.2), 0 0 0 30px rgba(93, 190, 219, 0.2);
+        }
+        100% {
+            box-shadow: 0 0 0 10px rgba(93, 190, 219, 0.2), 0 0 0 20px rgba(93, 190, 219, 0.2), 0 0 0 30px rgba(93, 190, 219, 0.2), 0 0 0 40px rgba(93, 190, 219, 0);
+        }
+    }
+</style>
+<A HREF="http://www.5151hb.net/wap/index.php?ctl=uc_account&act=hospital_verify"><div class="mlztx" onclick="yuyue();"><span>立即预约</span><i style="line-height: 35px;    font-size: 27px;" class="fa fa-hand-pointer-o" aria-hidden="true"></i></div></A>
+

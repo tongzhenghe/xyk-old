@@ -1,0 +1,78 @@
+{include file="public/header"}
+{include file="public/left"}
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <div class="layui-card layadmin-header">
+            <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+                <a lay-href="">首页</a><span lay-separator="">/</span>
+                <a><cite>导航列表</cite></a><span lay-separator="">/</span>
+                <a><cite>添加</cite></a>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-header"><cite>当前位置：</cite><span>添加导航</span></div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <div class="layui-form" >
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">顺序</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="sort" lay-verify="required" {if !empty($find_data.sort)}  value="{$find_data.sort}{/if}"  placeholder="顺序"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">导航名称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" {if !empty($find_data.title)} value="{$find_data.title}{/if}" lay-verify="title" autocomplete="off"
+                                       placeholder="导航名称" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">选择框:</label>
+                            <div class="layui-input-block">
+                                <select name="menucate" lay-verify="required">
+                                    <option name="menucate" value="0">-顶级分类-</option>
+                                    {if !empty($menucate)}
+                                    {foreach $menucate as $vo}
+                                    <option name="menucate" {if $vo.parentid != 0} disabled="" style="background: #dcdcdc" {/if} value="{$vo.id}"  <?php if( !empty($find_data['id']) && $vo['id'] == $find_data['parentid'] ) {echo 'selected';} ?>><?php if(!empty($vo['html'])){ echo $vo['html'];}?>{$vo.title}</option>
+                                    {/foreach}
+                                    {/if}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">跳转链接：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="url" {if !empty($find_data.url)} value="{$find_data.url}{/if}" lay-verify="url" autocomplete="off"  placeholder="跳转链接" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">图标：</label>
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn uploads layui-btn-normal">
+                                    <i class="layui-icon">&#xe67c;</i>选择图片
+                                </button>
+                                <div class="layui-upload-list" style="margin: 10px 0;">
+                                    <img class="layui-upload-img" id="test-upload-normal-img" style=" background: #e2e2e2; width: 92px; height: 92px;margin: 0 10px 10px 0;" {if !empty($find_data.icon)} src="{$find_data.icon}" {/if}>
+                                    <p id="test-upload-demoText"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-footer" style="margin: 0 auto;width: 15%;">
+                            {if !empty($find_data.id)}
+                            <input type="hidden"  name="hidId" value="{$find_data.id}">
+                            {/if}
+                            <button class="layui-btn layui-btn-sm layui-btn-normal add_menu">+ 提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm ">返回列表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}
+
+

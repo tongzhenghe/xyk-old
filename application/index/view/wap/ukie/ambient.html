@@ -1,0 +1,27 @@
+{include file="../application/index/view/wap/ukie/include/header.html" /}
+<div class="navBarBox">
+    <ul class="nav">
+        {if !empty($ambient)}
+        {volist name="ambient" id="v" key="k" }
+        <li title="item_{$k}" {if $k == 1}class="nav_hover"{/if}>{$v.title}</li><!--class="nav_hover"-->
+        <!--<li title="item_2">院内环境</li>-->
+        {/volist}
+        {/if}
+    </ul>
+</div>
+<div id="list">
+    {if !empty($ambient)}
+    {volist name="ambient" id="v" key="k" }
+    <div class="task_item" id="item_{$k}">
+        {volist name="v.ambient_icon" id="vv" key="kk" }
+        <ul>
+            <li><img src="{$vv.icon}"  onclick="previewImg(this)" /></li>
+            <li>{$vv.title}</li>
+        </ul>
+        {/volist}
+    </div>
+    {/volist}
+    {/if}
+</div>
+</body>
+{include file="../application/index/view/wap/ukie/include/footer.html" /}

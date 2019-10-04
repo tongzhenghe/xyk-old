@@ -1,0 +1,190 @@
+{include file="public/header"}
+{include file="public/left"}
+<div class="layui-body layui-form">
+    <div class="layui-tab marg0" lay-filter="bodyTab">
+        <ul class="layui-tab-title top_tab">
+            <li class="layui-this" lay-id=""><i class="iconfont icon-computer"></i> <cite>数据统计</cite></li>
+        </ul>
+        <div class="layui-tab-content clildFrame">
+            <div class="layui-tab-item layui-show">
+                <div class="panel_box row lefts">
+                    <!--<div class="panel col">-->
+                        <!--<a href="javascript:;">-->
+                            <!--<div class="panel_icon">-->
+                                <!--<i class="layui-icon" data-icon="&#xe63a;">&#xe63a;</i>-->
+                            <!--</div>-->
+                            <!--<div class="panel_word newMessage">-->
+                                <!--<span class="layui-badge layui-bg-red">43</span>-->
+                                <!--<cite>最新消息</cite>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <div class="panel col">
+                        <a href="javascript:;">
+                            <div class="panel_icon">
+                                <i class="iconfont icon-wenben" data-icon="icon-wenben"></i>
+                            </div>
+                            <div class="panel_word newMessage">
+                                <span class="layui-badge layui-bg-red">{$today_total}</span>
+                                <cite>今日新增报价数量</cite>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!--<div class="panel col">-->
+                        <!--<a href="javascript:;">-->
+                            <!--<div class="panel_icon">-->
+                                <!--<i class="iconfont icon-wenben" data-icon="icon-wenben"></i>-->
+                            <!--</div>-->
+                            <!--<div class="panel_word newMessage">-->
+                                <!--<span class="layui-badge layui-bg-red">{}</span>-->
+                                <!--<cite>当日统计报价量</cite>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    <!--</div>--> <a href="<?php echo url('tendering/merchant_msg');?>">
+                    <div class="panel col">
+                        <a href="javascript:;">
+                            <div class="panel_icon">
+                                <i class="iconfont icon-text" data-icon="icon-text"></i>
+                            </div>
+                            <div class="panel_word newMessage">
+                             <span class="layui-badge layui-bg-red ">  {$total_num}</span>
+                                <cite>累计报价量</cite>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sysNotice col" style="    width: 71%;">
+                        <blockquote class="layui-elem-quote title" style="color: #00a0e9">今日新增报价数据统计</blockquote>
+                        <div class="layui-elem-quote layui-quote-nm">
+                            <table class="layui-table" lay-skin="row">
+                                <colgroup>
+                                    <col width="1">
+                                    <col width="10">
+                                    <col width="3">
+                                    <col width="3">
+                                    <col width="2">
+                                    <col width="2">
+                                    <col width="3">
+                                    <col width="3">
+                                    <col width="3">
+                                    <col width="3">
+                                    <col width="3">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>(ID)</th>
+                                    <th>对应商品</th>
+                                    <th>厂家联系人</th>
+                                    <th>厂家联系方式</th>
+                                    <th>报价时间</th>
+                                    <th>厂家地址</th>
+                                    <th>厂家出售规格</th>
+                                    <th>出售单价</th>
+                                    <th>对方出售数量</th>
+                                    <th>报价单位</th>
+                                    <th>厂家名称</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {if !empty($today_data)}
+                                {volist name="today_data" id="vo"}
+                                <tr>
+                                    <td>{$vo.id}</td>
+
+                                    <td align="left">
+                                        <p style="float: left">
+                                            <a href="<?php echo url('tendering/zb_goods')?>?id={$vo.goods_id}&point=_add"><img src="{$vo.goods_pic}" width="25px"></a></p>
+                                        <p>商品id： {$vo.goods_id}</p>
+                                        <p style="color: #0092dc;;">商品名称：<a href="<?php echo url('tendering/zb_goods')?>?id={$vo.goods_id}&point=_add"> {$vo.goods_title}</p></a>
+                                        </p>
+                                    </td>
+
+                                    <td align="left">
+                                        &nbsp;&nbsp;{$vo.merchant_name}
+                                    </td>
+
+                                    <td align="left">
+                                        {$vo.merchant_tel}
+                                    </td>
+                                    <td align="left">
+                                        {$vo.sub_time}
+                                    </td>
+
+                                    <td align="left">
+                                        {$vo.merchant_address}
+                                    </td>
+
+                                    <td align="left">
+                                        {$vo.specifications}
+                                    </td>
+
+                                    <td align="left">
+                                        {$vo.single_price}
+                                    </td>
+
+                                    <td align="left">
+                                        {$vo.num}
+                                    </td>
+
+                                    <td align="left">
+                                        {$vo.num}&nbsp;&nbsp;{$vo.company}
+                                    </td>
+
+                                    <td align="left">
+                                        {$vo.manufactor}
+                                    </td>
+                                </tr>
+                                {/volist}
+                                {/if}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sysNotice col" style="width: 21%;">
+                        <blockquote class="layui-elem-quote title" style="color: #00a0e9">系统参数</blockquote>
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="150">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>框架版本：</td>
+                                <td class="userRights">Thinkphp/5.0.23</td>
+                            </tr>
+                            <tr>
+                                <td>语言版本：</td>
+                                <td class="version">{$system.php_version}</td>
+                            </tr>
+                            <tr>
+                                <td>端口：</td>
+                                <td class="author">{$system.port}</td>
+                            </tr>
+                            <tr>
+                                <td>网站首页：</td>
+                                <td class="homePage">{$system.website}</td>
+                            </tr>
+                            <tr>
+                                <td>运行环境：</td>
+                                <td class="dataBase">{$system.run_type}</td>
+                            </tr>
+                            <tr>
+                                <td>数据库版本：</td>
+                                <td class="dataBase">{$system.mysql_version}</td>
+                            </tr>
+                            <tr>
+                                <td>缓存类型：</td>
+                                <td class="userRights">{$system.catche_type}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}

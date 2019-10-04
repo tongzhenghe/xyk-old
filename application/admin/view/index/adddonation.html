@@ -1,0 +1,122 @@
+{include file="public/header"}
+{include file="public/left"}
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <div class="layui-card layadmin-header">
+            <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+                <a lay-href="">首页</a><span lay-separator="">/</span>
+                <a><cite>捐助列表</cite></a><span lay-separator="">/</span>
+                <a><cite>添加列表</cite></a>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-header"><cite>当前位置：</cite><span>添加列表</span></div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <div class="layui-form">
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">标题：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" {if !empty($find_data.title)} value="{$find_data.title}{/if}" lay-verify="title" autocomplete="off"
+                                       placeholder="title" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">简介：</label>
+                            <div class="layui-input-block">
+                                <textarea name="intro" required lay-verify="required" placeholder="intro" class="layui-textarea" style="width: 55%">{if (!empty($find_data.intro))}{$find_data.intro}{/if}</textarea>
+                            </div>
+                        </div>
+
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">关键词：</label>
+                            <div class="layui-input-block">
+                                <textarea name="keywords" required lay-verify="required" placeholder="keywords" class="layui-textarea" style="width: 55%">{if (!empty($find_data.keywords))}{$find_data.keywords}{/if}</textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">捐助人姓名(单位)：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="user_name" {if !empty($find_data.user_name)} value="{$find_data.user_name}{/if}" lay-verify="title" autocomplete="off"
+                                       placeholder="捐助人员姓名" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">图标：</label>
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn uploads layui-btn-normal">
+                                    <i class="layui-icon">&#xe67c;</i>选择图片
+                                </button>
+                                <div class="layui-upload-list" style="margin: 10px 0;">
+                                    <img class="layui-upload-img" id="test-upload-normal-img" style=" width: 92px; height: 92px;margin: 0 10px 10px 0;" {if !empty($find_data.pic)} src="{$find_data.pic}" {/if}  src="/static/admin/icon/nopic.png">
+                                    <p id="test-upload-demoText"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">联系方式：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="user_tel" lay-verify="required"  value="{if !empty($find_data.user_tel)}{$find_data.user_tel}{/if}"  placeholder="请输入捐助人电话"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item" style="width: 20%;">
+                            <label class="layui-form-label">捐助时间：</label>
+                            <div class="layui-input-block">
+                                <input type="text" class="layui-input" name="time" value="{if !empty($find_data.time)}{$find_data.time}{/if}"  style="  background-color: #6496af47;" id="time1">
+                            </div>
+                        </div>
+                        <style>
+                            .layui-tab-title .layui-this {
+                                background: #d4e2e9;
+                                border-top-left-radius: 4px;
+                                border-top-right-radius: 4px;
+                            }
+                        </style>
+                        <div class="layui-form-item" style="    margin-bottom: 12%;">
+                            <label class="layui-form-label" style="float: left">捐助:</label>
+                            <div class="layui-input-block">
+                                <div class="layui-tab">
+                                    <ul class="layui-tab-title">
+                                        <li class="layui-this">合计金额</li>
+                                        <li>备注</li>
+                                    </ul>
+                                    <div class="layui-tab-content">
+                                        <div class="layui-tab-item layui-show">
+                                            <label class="layui-form-label" style="float: left">合计金额:</label>
+                                            <div class="layui-input-inline" style="width: 33%;">
+                                                <input type="text" name="m_price" value="{if !empty($find_data)}{$find_data.d_money.m_price}{/if}" placeholder="￥" autocomplete="off" class="layui-input">
+                                                <div class="layui-form-mid layui-word-aux">注意：如有物资捐助， 请备注。</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-tab-item">
+                                            <label class="layui-form-label" style="float: left">备注:</label>
+                                            <div class="layui-input-inline" style="width: 500px;">
+                                            <textarea name="m_comment" required lay-verify="required" placeholder="如有物资请备注" class="layui-textarea">{if !empty($find_data)}{$find_data.d_money.m_comment}{/if}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-footer" style="margin: 0 auto;width: 15%;">
+                            {if !empty($find_data.id)}
+                            <input type="hidden"  name="hidId" value="{$find_data.id}">
+                            {/if}
+                            <button class="layui-btn layui-btn-sm layui-btn-normal add_donation">+ 提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm ">返回列表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}
+
+

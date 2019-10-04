@@ -1,0 +1,92 @@
+{include file="public/header"}
+{include file="public/left"}
+
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <div class="layui-card layadmin-header">
+            <div class="layui-breadcrumb" lay-filter="breadcrumb" style="visibility: visible;">
+                <a lay-href="">首页</a><span lay-separator="">/</span>
+                <a><cite>列表</cite></a><span lay-separator="">/</span>
+                <a><cite>添加幻灯片</cite></a>
+            </div>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-header"><cite>当前位置：</cite><span>添加导航</span></div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <div class="layui-form" >
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">顺序：</label>
+                            <div class="layui-input-block">
+                                <input type="number" name="sort" lay-verify="required" {if !empty($find_data.sort)}  value="{$find_data.sort}{/if}"  placeholder="顺序"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">名称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" {if !empty($find_data.title)} value="{$find_data.title}{/if}" lay-verify="title" autocomplete="off"
+                                       placeholder="名称" class="layui-input">
+                            </div>
+                        </div>
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">简介：</label>
+                            <div class="layui-input-block">
+                                <textarea name="intro" required lay-verify="required"
+                                          placeholder="intro" class="layui-textarea" style="width: 55%">{if (!empty($find_data.intro))}{$find_data.intro}{/if}</textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">关键词：</label>
+                            <div class="layui-input-block">
+                                <textarea name="keywords" required lay-verify="required"
+                                          placeholder="keywords" class="layui-textarea" style="width: 55%">{if (!empty($find_data.keywords))}{$find_data.keywords}{/if}</textarea>
+                            </div>
+                        </div>
+
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">详情：</label>
+                            <div class="layui-input-block">
+                                <div class="field" >
+                                    <script id="container"  name="content" type="text"> {present name="find_data"}{$find_data.content} {/present}</script>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">上传幻灯片：</label>
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn uploads layui-btn-normal">
+                                    <i class="layui-icon">&#xe67c;</i>选择图片
+                                </button>
+                                <div class="layui-upload-list" style="margin: 10px 0;">
+                                    <img class="layui-upload-img" id="test-upload-normal-img"  {if !empty($find_data.pic)} src="{$find_data.pic}" {/if}>
+                                    <p id="test-upload-demoText"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="layui-footer" style="margin: 0 auto;width: 15%;">
+                            {if !empty($find_data.id)}
+                            <input type="hidden"  name="hidId" value="{$find_data.id}">
+                            {/if}
+                            <button class="layui-btn layui-btn-sm layui-btn-normal add_banner">+ 提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm ">返回列表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}
+
+

@@ -1,0 +1,18 @@
+{include file="../application/index/view/wap/ukie/include/header.html" /}
+<div class="news-list">
+    {if !empty($news_list)}
+    {foreach $news_list as $vo}
+    <a href="{:url('ukie/news_list', ['id' => $vo.id])}">
+    <div class="News_box">
+        <img src="{$vo.icon}"/>
+        <ul>
+            <li>{$vo.intro}</li>
+            <li><span>发布时间：{$vo.create_time}</span></li>
+        </ul>
+    </div>
+    </a>
+    {/foreach}
+    {/if}
+</div>
+<div class="Page">{$Obj->render()}</div>
+{include file="../application/index/view/wap/ukie/include/footer.html" /}

@@ -1,0 +1,204 @@
+﻿{include file="../application/index/view/wap/public/left.html" /}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 96%;
+        height: 188px;
+        margin: 50px auto;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    /*.title {*/
+        /*border-left: 5px solid blue;*/
+        /*line-height: 35px;*/
+        /*padding-left: 5px;*/
+        /*margin-bottom: 5px;*/
+    /*}*/
+
+    .scroll {
+        width: 100%;
+        margin: 0 auto;
+        height: 100%;
+        line-height: 26px;
+        font-size: 12px;
+        overflow: hidden;
+    }
+
+    .flex-between {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .flex-between-center {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .padding-5 {
+        padding: 5px;
+    }
+
+    .margin-t-20 {
+        margin-top: 20px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .inline {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #339933;
+        margin: 0 10px;
+    }
+
+    .underline {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: 0 10px;
+    }
+
+    .select {
+        margin-top: 10px;
+    }
+</style>
+<!-- banner切换 -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        {if !empty($banner)}
+        {foreach $banner as $vo}<!--<?php echo url('index/home')?>?m=banner&id={$vo.id}&do=detail-->
+        <div class="swiper-slide"><a href="javascript:;"><img
+                src="{$vo.pic}" width="100%"/></a></div>
+        {/foreach}
+        {/if}
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<script src="/static/index/wap/js/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script>
+
+<!-- 类目 -->
+<div class="Category">
+    {if !empty($menu)}
+    {foreach $menu as $vo}
+    <a href="{$vo.url}"><img src="{$vo.icon}"/>{$vo.title}</a>
+    {/foreach}
+    {/if}
+</div>
+<!-- 新闻 -->
+<div class="New">
+    <div class="New_title"><span>新闻资讯<span class="layui-badge">new</span></span><a href="<?php echo url('index/news')?>"><span class="layui-badge layui-bg-gray">more<i class="layui-icon layui-icon-next" style="    font-size: 12px;"></i></span> </a></div>
+    <div class="New_box">
+
+        <div class="container" >
+            <div class="scroll" >
+                <ul>
+
+                    {if !empty($recommend_news)}
+                    {foreach $recommend_news as $vo}
+
+                    <li style="    border-bottom: 1px solid #efefef;">
+                        <div class="margin-b-5 padding-5">
+                            <div class="flex-between-center">
+                                <div>
+                                    <div class="bg-primary padding-5 margin-b-5">
+
+                                        <img src="{$vo.icon}" width="50px"/>
+                                    </div>
+                                </div>
+                                <div><a href="<?php echo url('index/news');?>?id={$vo.id}">{$vo.title}</a></div>
+                            </div>
+                            <div class="flex-between">
+                                <div style="color: #c1bdbd;"><span>发布时间：<?php  echo date('Y/m/d H:i:s', $vo['create_time'])?></span></div>
+                            </div>
+                        </div>
+                    </li>
+                    {/foreach}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+
+        <script src="/static/index/wap/js/scroll.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('.scroll').scroll({
+                    speed: 60, //数值越大，速度越快
+                });
+            });
+        </script>
+
+    </div>
+</div>
+
+<!-- 服务项目 -->
+<div class="project">
+    <div class="title" style=" width: 95%; margin: 0px 5px 0 15px;  font-size: 15px;">服务项目 <i    class="layui-icon layui-icon-menu-fill" style="color: #ff7815;  font-size: 23px;margin: 10px;"></i>
+        <a href="<?php echo url('index/activity')?>" style="    float: right;    font-size: 12px;   margin-right: 15px;"><span style="    font-size: 15px;   margin: 0px 12px 0 15px;"   class="layui-badge layui-bg-gray">more<i class="layui-icon layui-icon-next" style="    font-size: 12px;"></i></span></a></div>
+    <div class="project_box">
+        {if !empty($activity)}
+        {foreach $activity as $vo}
+        <a href="<?php echo url('index/activity')?>?activity_id={$vo.id}&do=activity_detail"><img src="{$vo.icon}"/><span><?php echo $vo['intro']?></span></a>
+        {/foreach}
+        {/if}
+    </div>
+</div>
+
+<!-- 养老问答 -->
+<div class="Question">
+    <div class="title" style="      margin: 0px 5px 0 15px;  font-size: 15px;">养老问答 <i class="layui-icon layui-icon-survey" style="color: #ff7815;  font-size: 23px;margin: 10px;"></i><a  href="/index/index/asks"   style="    float: right;    font-size: 12px;   margin-right: 15px;"><span style="    font-size: 15px;
+    margin: 0px 12px 0 15px;"    class="layui-badge layui-bg-gray">more<i    class="layui-icon layui-icon-next"   style="    font-size: 12px;"></i></span>
+    </a></div>
+    <div class="Question_box">
+        {if !empty($recommend_asks)}
+        {foreach $recommend_asks as $vo}
+        <dl>
+            <a href="<?php echo url('index/asks')?>?id={$vo.id}" >  <dt><span  style="color: #FF5722;;">[{$vo.title}]</span>&nbsp;&nbsp;<?php if(is_serialized_string($vo['intro'])): echo $vo['intro'] ;?>.....<?php Endif;?></dt></a>
+            <dd><?php echo date('Y/m/d H:i:s', $vo['create_time'])?></dd>
+        </dl>
+        {/foreach}
+        {/if}
+    </div>
+</div>
+
+<!-- 环境设施 -->
+<div class="surroundings">
+    <div class="title" style="      margin: 0px 5px 0 15px;  font-size: 15px;">环境设施 <i class="layui-icon layui-icon-camera-fill" style="color: #ff7815;  font-size: 23px;margin: 10px;"></i><a href="/index/index/ambient" style="    float: right;    font-size: 12px;   margin-right: 15px;"><span style="    font-size: 15px;  margin: 0px 12px 0 15px;"   class="layui-badge layui-bg-gray">more<i class="layui-icon layui-icon-next"  style="    font-size: 12px;"></i></span>
+    </a></div>
+
+    <!--<div class="title">环境设施 <i class="layui-icon layui-icon-camera-fill"></i></div>-->
+    <div class="surroundings_box">
+        {if !empty($recommend_ambient)}
+        {foreach $recommend_ambient as $vo}
+        <img src="{$vo.icon}" onclick="previewImg(this)"/>
+        {/foreach}
+        {/if}
+    </div>
+</div>
+{include file="../application/index/view/wap/public/footer.html" /}

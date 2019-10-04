@@ -1,0 +1,128 @@
+﻿{include file="../application/index/view/wap/ukie/include/header.html" /}
+<!-- banner切换 -->
+<div class="swiper-container" style="margin-top: 34px;">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="http://ukie.xinyikangyl.com/banner_01.jpg" width="100%" /></div>
+        <div class="swiper-slide"><img src="http://ukie.xinyikangyl.com/banner_02.png" width="100%" /></div>
+        <div class="swiper-slide"><img src="http://ukie.xinyikangyl.com/banner_03.jpg" width="100%" /></div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay:5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script>
+
+
+
+<!-- 简介 -->
+<div class="Introduction">
+    <div class="title_list"><b class="lf">心怡康简介</b><a href="{:url('ukie/about')}" class="rf">查看全文>></a></div>
+    <div class="box">
+        <img  src="http://ukie.xinyikangyl.com/6.png" width="100%"/>
+
+    </div>
+</div>
+<!-- 新闻 -->
+<div class="New">
+    <div class="title_list" style="margin-bottom: 10px;"><b class="lf">新闻资讯</b><a href="{:url('ukie/news_list')}" class="rf">更多>></a></div>
+    <div class="New_box">
+        {if !empty($re_news)}
+        {foreach $re_news as $vo}
+        <a href="{:url('ukie/news_list', ['id' => $vo.id])}">
+        <div class="New_pic">
+            <img src="{$vo.icon}"/>
+            <p>
+                <b>{$vo.intro}</b>
+                <span>发布：{$vo.create_time}</span>
+            </p>
+        </div>
+        </a>
+        {/foreach}
+        {/if}
+    </div>
+</div>
+
+<!-- 团队 -->
+<div class="team">
+    <div class="title_list"><b class="lf">专家团队</b></div>
+     <div class="swiper-container">
+
+        <div class="swiper-wrapper">
+
+            {if !empty($team)}
+
+            {foreach $team as $vo}
+
+            <div class="swiper-slide">
+
+                {foreach $vo as $v}
+
+                {if !empty($v.icon)}
+
+                <a href="{:url('ukie/doci', ['id' => $v.id])}"><img src="{$v.icon}" width="100%" /></a>
+
+                {/if}
+
+                {/foreach}
+
+            </div>
+
+            {/foreach}
+
+            {/if}
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+
+        <div class="swiper-button-prev"></div>
+
+    </div>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay:5000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</div>
+<!-- 环境 -->
+<div class="surroundings">
+    <img src="/static/index/wap/ukie/test/images/v3.jpg" width="100%">
+</div>
+<style>
+    .img-demo {
+        margin-bottom: 60px;
+    }
+    .img-demo img {
+        width: 100%;
+    }
+</style>
+<div class="img-demo">
+<img src="/static/index/wap/ukie/test/images/ts5.jpg" />
+<img src="/static/index/wap/ukie/test/images/ts6.jpg" />
+<img src="/static/index/wap/ukie/test/images/ts7.jpg" />
+<img src="/static/index/wap/ukie/test/images/ts8.jpg" />
+<img src="/static/index/wap/ukie/test/images/ts9.jpg" />
+<img src="/static/index/wap/ukie/test/images/ts10.jpg"/>
+<img src="/static/index/wap/ukie/test/images/v4.jpg" />
+</div>
+{include file="../application/index/view/wap/ukie/include/footer.html" /}

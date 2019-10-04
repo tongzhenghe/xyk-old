@@ -1,0 +1,41 @@
+{include file="public/header"}
+{include file="public/left"}
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-header"><cite>当前位置：</cite><span>网站设置</span></div>
+                <div class="layui-card-body" style="padding: 15px;">
+                    <div class="layui-form" >
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">标题：</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" name="title" class="layui-textarea">{if !empty($setting)} {$setting.title}{/if}</textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">关键词：</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" name="keywords"  class="layui-textarea">{if !empty($setting)} {$setting.keywords}{/if}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">网站描述：</label>
+                            <div class="layui-input-block">
+                                <textarea placeholder="请输入内容" name="description"   class="layui-textarea">{if !empty($setting)} {$setting.description}{/if}</textarea>
+                            </div>
+                        </div>
+                        <div class="layui-footer" style="margin: 0 auto;width: 15%;">
+                            {if !empty($setting.id)}
+                            <input type="hidden"  name="hidId" value="{$setting.id}">
+                            {/if}
+                            <button class="layui-btn layui-btn-normal layui-btn-sm add_setting">+ 提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer"}

@@ -1,0 +1,32 @@
+
+{include file="../application/index/view/wap/public/left.html" /}
+<style type="text/css">
+</style>
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        {if !empty($cate_ambient)}
+        {foreach $cate_ambient as $vo}
+          <li class="cate" data-id="{$vo.id}">{$vo.title}</li>
+        {/foreach}
+        {/if}
+    </ul>
+    <div class="layui-tab-content cate-ambient-demo">
+        <div class="layui-tab-item layui-show">
+            <div id="list">
+                <div class="task_item" id="item_2">
+                    <div class="task_item">
+                        {if !empty($ambient)}
+                        {foreach $ambient as $vo}
+                                <ul>
+                                <li><img id="eeee" src="{$vo.icon}"  onclick="previewImg(this)"/></li>
+                                <li>{$vo.title}</li>
+                                </ul>
+                        {/foreach}
+                        {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{include file="../application/index/view/wap/public/footer.html" /}
